@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy · Remy"
+  description="How Remy handles your data. The short version: only you can see it."
+>
+  <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] font-semibold text-sm"
+          aria-hidden="true">R</span>
+        <span class="text-lg font-semibold tracking-tight">Remy</span>
+      </a>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Privacy</h1>
+    <p class="mt-4 text-sm text-[var(--muted)]">Placeholder. A full privacy policy will replace this before public launch.</p>
+
+    <div class="prose prose-stone mt-12 max-w-none text-[var(--ink-soft)] leading-relaxed space-y-6">
+      <p>
+        The short version: Remy stores your Google OAuth tokens and the working
+        memory it builds from your conversations. Only you can see your data.
+        We don't sell, share, or mine it.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">What we store</h2>
+      <p>
+        When you sign in with Google, we store your OAuth access and refresh
+        tokens encrypted at rest using AES-256-GCM. These tokens let Remy read
+        your Gmail and Calendar to help you. They are never shared or
+        transmitted in plaintext.
+      </p>
+      <p>
+        When you chat with Remy, we store the conversation so Remy can pick up
+        where you left off. Remy also writes a compact knowledge graph of the
+        people, companies, and decisions that come up, so it can help you
+        better over time. All of this is scoped to your account.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Data isolation</h2>
+      <p>
+        We use Postgres row-level security. Every table that holds user data
+        has a database-enforced policy that prevents any account from reading
+        any other account's rows. It's not just an application check; the
+        database itself refuses.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">What we don't do</h2>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>We don't sell your data to anyone, ever.</li>
+        <li>We don't train AI models on your private data.</li>
+        <li>We don't send email, make calls, or write to your calendar without your explicit approval every single time.</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Deletion</h2>
+      <p>
+        You can delete your account at any time. Deletion removes every row
+        associated with your account from our database, including OAuth
+        tokens, messages, and the knowledge graph.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Contact</h2>
+      <p>
+        Questions or concerns: <a class="underline" href="mailto:support@hootventures.ai">support@hootventures.ai</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer class="border-t border-[var(--line)] mt-12">
+    <div class="mx-auto max-w-3xl px-6 py-8 text-sm text-[var(--muted)]">
+      <a class="hover:text-[var(--ink)]" href="/">← Back to home</a>
+    </div>
+  </footer>
+</Layout>

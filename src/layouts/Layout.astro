@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Remy — Your own AI agent. Without the setup.',
+  description = 'Remy reads your email, checks your calendar, and gets things done for you. Open the app, sign in with Google, start talking.',
+  ogImage = 'https://my-remy.com/og.png',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://my-remy.com').toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F7F5F2" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Remy" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <style is:global>
+      :root {
+        --bg: #f7f5f2;
+        --ink: #1a1a1a;
+        --ink-soft: #4a4a48;
+        --muted: #8a8a86;
+        --accent: #b65416;
+        --line: rgba(26, 26, 26, 0.08);
+        --card: #ffffff;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+          sans-serif;
+        font-feature-settings: 'ss01', 'cv11';
+      }
+      ::selection {
+        background: var(--ink);
+        color: var(--bg);
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

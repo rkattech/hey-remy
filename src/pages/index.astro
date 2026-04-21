@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const waitlistMailto =
+  'mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0ADevice%20(iPhone%20%2F%20Android)%3A%20';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Sign in with Google',
+    body: 'No new account. No password. Sign in with the Gmail you already use.',
+  },
+  {
+    n: '02',
+    title: 'Tell Remy what you need',
+    body: '"Book my dentist for sometime in May, prefer Thursday or Friday." In plain English. Like a real assistant.',
+  },
+  {
+    n: '03',
+    title: 'Remy asks before anything permanent',
+    body: 'Remy drafts the email, finds the slot, shows you the plan. Nothing gets sent or booked until you tap Approve.',
+  },
+];
+
+const capabilities = [
+  {
+    title: 'Book appointments',
+    body: 'Dentist, doctor, stylist, mechanic. Remy finds the right time, drafts the email, handles the back and forth.',
+  },
+  {
+    title: 'Manage your calendar',
+    body: "Check what's on your plate, find a time that works, protect the blocks you care about.",
+  },
+  {
+    title: 'Triage your inbox',
+    body: "See what needs you. Draft replies. Ignore what doesn't matter. Find that email from three months ago.",
+  },
+  {
+    title: 'Remember what matters',
+    body: "The people in your life, the decisions you've made, the things you care about. Remy gets smarter the more you use it.",
+  },
+];
+
+const whys = [
+  {
+    title: 'Private by design',
+    body: 'Your email and calendar tokens are encrypted at rest. Row-level database isolation means only you can see your own data. Full stop.',
+  },
+  {
+    title: 'Safe by default',
+    body: 'Remy never sends an email, makes a call, or books a meeting without your explicit approval. Every irreversible action waits for your tap.',
+  },
+  {
+    title: 'Gets smarter with use',
+    body: 'Every conversation teaches Remy the people, places, and preferences that matter to you. Day 30 is noticeably better than day 1.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Is my data private?',
+    a: "Yes. Your OAuth tokens are encrypted with AES-GCM before they touch the database. Every table uses row-level security so only you can see your own data. We never read your email. We never sell anything.",
+  },
+  {
+    q: 'Do I need to install anything weird?',
+    a: 'Just the app. No CLI, no browser extension, no daemon running on your laptop. It works on iOS and Android.',
+  },
+  {
+    q: 'What does it cost?',
+    a: "Free during early access. We'll share pricing well before you'd be asked to pay.",
+  },
+  {
+    q: 'When can I try it?',
+    a: "We're onboarding in small batches to keep the experience tight. Join the waitlist and we'll reach out as we open the next cohort.",
+  },
+  {
+    q: 'How is this different from ChatGPT or Siri?',
+    a: 'ChatGPT can tell you about your dentist; Remy books the appointment. Siri can read one email; Remy triages your whole inbox. Remy is an assistant that does real work, not a chatbot that talks about it.',
+  },
+  {
+    q: "Who's behind this?",
+    a: 'Built by Rohit Kapoor at Hoot Ventures. Questions: support@hootventures.ai.',
+  },
+];
+---
+
+<Layout>
+  <header class="mx-auto max-w-5xl px-6 pt-8 sm:pt-12">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 group">
+        <span
+          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] font-semibold text-sm"
+          aria-hidden="true">R</span>
+        <span class="text-lg font-semibold tracking-tight">Remy</span>
+      </a>
+      <a
+        href={waitlistMailto}
+        class="inline-flex items-center rounded-full bg-[var(--ink)] px-4 py-2 text-sm font-medium text-[var(--bg)] transition-opacity hover:opacity-85">
+        Join the waitlist
+      </a>
+    </nav>
+  </header>
+
+  <section class="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <h1 class="text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl leading-[1.05]">
+      Your own AI agent.<br />
+      <span class="text-[var(--muted)]">Without the setup.</span>
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg sm:text-xl text-[var(--ink-soft)] leading-relaxed">
+      Remy reads your email, checks your calendar, books appointments, and
+      remembers what matters to you. Open the app, sign in with Google, start
+      talking.
+    </p>
+    <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <a
+        href={waitlistMailto}
+        class="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-6 py-3.5 text-base font-medium text-[var(--bg)] transition-opacity hover:opacity-85">
+        Join the waitlist
+        <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a
+        href="#how"
+        class="inline-flex items-center justify-center rounded-full border border-[var(--line)] bg-transparent px-6 py-3.5 text-base font-medium text-[var(--ink)] transition-colors hover:bg-white">
+        See how it works
+      </a>
+    </div>
+    <p class="mt-6 text-sm text-[var(--muted)]">
+      iOS and Android. Free during early access.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-24">
+    <div
+      class="mx-auto max-w-xl rounded-3xl border border-[var(--line)] bg-[var(--card)] p-6 shadow-[0_20px_60px_-30px_rgba(26,26,26,0.15)] sm:p-8">
+      <div class="mb-4 flex items-center gap-2 text-xs text-[var(--muted)]">
+        <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+        Remy
+      </div>
+      <div class="space-y-4 text-[15px] leading-relaxed">
+        <div class="flex justify-end">
+          <div class="max-w-[85%] rounded-2xl rounded-br-md bg-[var(--ink)] px-4 py-2.5 text-[var(--bg)]">
+            Book my dentist for sometime in May, prefer Thu or Fri.
+          </div>
+        </div>
+        <div class="flex">
+          <div class="max-w-[90%] rounded-2xl rounded-bl-md bg-stone-100 px-4 py-3 text-[var(--ink)]">
+            Found your dentist in Gmail: Smile Dental. Last visit Oct 14. I
+            pulled three open slots:
+            <ul class="mt-2 space-y-1 text-[14px] text-[var(--ink-soft)]">
+              <li>
+                Thu May 14, 9:00 AM <span class="text-[var(--muted)]">(lightest day)</span>
+              </li>
+              <li>Fri May 22, 10:30 AM</li>
+              <li>Thu May 28, 8:30 AM</li>
+            </ul>
+            <p class="mt-3 text-[14px]">
+              Ready to reply on your thread. Which slot do you want?
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <div class="max-w-[85%] rounded-2xl rounded-br-md bg-[var(--ink)] px-4 py-2.5 text-[var(--bg)]">
+            Thursday the 14th, please.
+          </div>
+        </div>
+        <div class="flex">
+          <div class="max-w-[95%] rounded-2xl rounded-bl-md bg-stone-100 px-4 py-3 text-[var(--ink)]">
+            Drafted this reply on your existing thread:
+            <div class="mt-3 rounded-xl border border-[var(--line)] bg-white p-3 text-[14px] text-[var(--ink-soft)]">
+              Hi, would love to come in Thursday May 14 at 9 AM for a cleaning.
+              Anything I should bring?
+            </div>
+            <div class="mt-4 flex gap-2">
+              <button
+                class="rounded-full bg-[var(--ink)] px-4 py-2 text-[13px] font-medium text-[var(--bg)]"
+                type="button" disabled>
+                Approve &amp; Send
+              </button>
+              <button
+                class="rounded-full border border-[var(--line)] px-4 py-2 text-[13px] font-medium"
+                type="button" disabled>
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-6 text-center text-xs text-[var(--muted)]">
+        Illustration of a typical conversation.
+      </p>
+    </div>
+  </section>
+
+  <section id="how" class="bg-white border-y border-[var(--line)]">
+    <div class="mx-auto max-w-5xl px-6 py-24 sm:py-28">
+      <div class="max-w-2xl">
+        <p class="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+          How it works
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          Three steps. Nothing to configure.
+        </h2>
+        <p class="mt-4 text-lg text-[var(--ink-soft)]">
+          Most AI tools ask you to be a developer. Remy doesn't.
+        </p>
+      </div>
+      <ol class="mt-14 grid gap-8 sm:grid-cols-3">
+        {
+          steps.map((s) => (
+            <li class="relative">
+              <div class="text-sm font-semibold text-[var(--accent)]">{s.n}</div>
+              <h3 class="mt-3 text-xl font-semibold tracking-tight">{s.title}</h3>
+              <p class="mt-3 text-[var(--ink-soft)] leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-24 sm:py-28">
+    <div class="max-w-2xl">
+      <p class="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+        What Remy does
+      </p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+        An assistant that actually does things.
+      </h2>
+      <p class="mt-4 text-lg text-[var(--ink-soft)]">
+        Not a chatbot. A real helper that reads, writes, and follows through.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-2">
+      {
+        capabilities.map((c) => (
+          <div class="rounded-2xl border border-[var(--line)] bg-[var(--card)] p-6 transition-shadow hover:shadow-[0_10px_40px_-20px_rgba(26,26,26,0.12)]">
+            <h3 class="text-lg font-semibold tracking-tight">{c.title}</h3>
+            <p class="mt-2 text-[var(--ink-soft)] leading-relaxed">{c.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-white border-y border-[var(--line)]">
+    <div class="mx-auto max-w-5xl px-6 py-24 sm:py-28">
+      <div class="max-w-2xl">
+        <p class="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+          Why Remy
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          Powerful. Private. Patient.
+        </h2>
+      </div>
+      <div class="mt-14 grid gap-10 sm:grid-cols-3">
+        {
+          whys.map((w) => (
+            <div>
+              <h3 class="text-xl font-semibold tracking-tight">{w.title}</h3>
+              <p class="mt-3 text-[var(--ink-soft)] leading-relaxed">{w.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-24 sm:py-28">
+    <div class="text-center">
+      <p class="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
+        Questions
+      </p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+        The answers up front.
+      </h2>
+    </div>
+    <div class="mt-14 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+      {
+        faq.map((item) => (
+          <details class="group py-6">
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+              <h3 class="text-lg font-medium tracking-tight">{item.q}</h3>
+              <span
+                class="mt-1 shrink-0 text-[var(--muted)] transition-transform group-open:rotate-45"
+                aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-[var(--ink-soft)] leading-relaxed">{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 pb-24 sm:pb-32">
+    <div class="rounded-3xl bg-[var(--ink)] px-8 py-16 text-center text-[var(--bg)] sm:px-16 sm:py-24">
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-5xl">
+        Get your own AI assistant.
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-[var(--bg)]/75 text-lg">
+        We're rolling out in small batches so the product stays sharp. Drop your
+        email and we'll reach out as we open the next cohort.
+      </p>
+      <div class="mt-10">
+        <a
+          href={waitlistMailto}
+          class="inline-flex items-center justify-center rounded-full bg-[var(--bg)] px-8 py-4 text-base font-medium text-[var(--ink)] transition-opacity hover:opacity-90">
+          Join the waitlist
+          <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-[var(--line)]">
+    <div class="mx-auto flex max-w-5xl flex-col items-start gap-4 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-2">
+        <span
+          class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] text-xs font-semibold"
+          aria-hidden="true">R</span>
+        <span class="text-sm font-medium">Remy</span>
+        <span class="text-sm text-[var(--muted)]">· by Hoot Ventures</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-[var(--ink-soft)]">
+        <a class="hover:text-[var(--ink)]" href="mailto:support@hootventures.ai">
+          support@hootventures.ai
+        </a>
+        <a class="hover:text-[var(--ink)]" href="/privacy">Privacy</a>
+      </div>
+    </div>
+    <div class="mx-auto max-w-5xl px-6 pb-10 text-xs text-[var(--muted)]">
+      Remy is in active development. Features and scope may change as we learn.
+    </div>
+  </footer>
+</Layout>
