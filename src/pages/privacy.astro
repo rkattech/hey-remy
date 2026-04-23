@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const effectiveDate = 'April 23, 2026';
 ---
 
 <Layout
-  title="Privacy · Remy"
-  description="How Remy handles your data. The short version: only you can see it."
+  title="Privacy Policy · Remy"
+  description="How Remy collects, uses, protects, and shares your data. The short version: only you can see it."
 >
   <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
     <nav class="flex items-center justify-between">
@@ -12,68 +14,236 @@ import Layout from '../layouts/Layout.astro';
         <span
           class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] font-semibold text-sm"
           aria-hidden="true">R</span>
-        <span class="text-lg font-semibold tracking-tight">Remy</span>
+        <span class="italic-serif text-xl tracking-tight">Remy</span>
       </a>
+      <a href="/tos" class="text-sm text-[var(--ink-soft)] hover:text-[var(--ink)]">Terms of Service</a>
     </nav>
   </header>
 
-  <main class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
-    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Privacy</h1>
-    <p class="mt-4 text-sm text-[var(--muted)]">Placeholder. A full privacy policy will replace this before public launch.</p>
+  <main class="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Privacy Policy</h1>
+    <p class="mt-4 text-sm text-[var(--muted)]">Effective date: {effectiveDate}</p>
 
     <div class="prose prose-stone mt-12 max-w-none text-[var(--ink-soft)] leading-relaxed space-y-6">
       <p>
-        The short version: Remy stores your Google OAuth tokens and the working
-        memory it builds from your conversations. Only you can see your data.
-        We don't sell, share, or mine it.
+        Remy is an AI assistant operated by Hoot Ventures LLC ("Remy," "we," "us," or "our").
+        This Privacy Policy explains what information we collect when you use Remy's mobile
+        application and website (together, the "Service"), how we use it, who we share it with,
+        and the choices you have. We've tried to write this in plain English. Where legal terms
+        are unavoidable, we've done our best to explain them.
       </p>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">What we store</h2>
-      <p>
-        When you sign in with Google, we store your OAuth access and refresh
-        tokens encrypted at rest using AES-256-GCM. These tokens let Remy read
-        your Gmail and Calendar to help you. They are never shared or
-        transmitted in plaintext.
-      </p>
-      <p>
-        When you chat with Remy, we store the conversation so Remy can pick up
-        where you left off. Remy also writes a compact knowledge graph of the
-        people, companies, and decisions that come up, so it can help you
-        better over time. All of this is scoped to your account.
+      <p class="rounded-xl border border-[var(--line)] bg-[var(--bg-raised)]/60 p-5 text-[var(--ink)]">
+        <strong>The short version.</strong> You sign in with your Google or Microsoft account.
+        Remy stores the OAuth tokens so it can read your mail and calendar on your behalf, plus
+        the conversations and the compact knowledge graph Remy builds from them. Only you can see
+        your data. We don't sell it, we don't share it with advertisers, and we don't train
+        general-purpose AI models on it. You can delete everything at any time.
       </p>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Data isolation</h2>
-      <p>
-        We use Postgres row-level security. Every table that holds user data
-        has a database-enforced policy that prevents any account from reading
-        any other account's rows. It's not just an application check; the
-        database itself refuses.
-      </p>
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">1. Information we collect</h2>
+      <p>We collect the following categories of information:</p>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">What we don't do</h2>
+      <p><strong>(a) Account information.</strong> When you create an account by signing in with
+      Google or Microsoft, we receive basic profile information from those providers: your name,
+      email address, and profile photo. We store this so we can identify you and display it back
+      to you in the app.</p>
+
+      <p><strong>(b) OAuth tokens.</strong> When you grant Remy permission to access your Google
+      or Microsoft account, those providers issue us access and refresh tokens. We store these
+      tokens encrypted at rest using AES-256-GCM. They are the keys Remy uses to read your mail
+      and calendar when you ask it to. They are never shared with third parties and never
+      transmitted in plaintext.</p>
+
+      <p><strong>(c) Mail and calendar data.</strong> Depending on which permissions you grant,
+      Remy reads email messages, calendar events, and associated metadata (participants, times,
+      subjects, bodies, attachments when relevant) from your connected account. Remy uses this
+      data at request time to answer your questions, draft replies, and propose actions. Remy
+      caches the specific items it needs to complete your current task; it does not build a
+      wholesale mirror of your mailbox.</p>
+
+      <p><strong>(d) Conversation history.</strong> We store the messages you send to Remy and
+      Remy's responses so you can continue a conversation across sessions and devices.</p>
+
+      <p><strong>(e) Working memory.</strong> From your conversations and the data you ask Remy
+      to look at, Remy writes a compact knowledge graph of the people, organizations, projects,
+      preferences, and decisions that matter to you. This lets Remy help you better over time. It
+      is scoped to your account and visible only to you.</p>
+
+      <p><strong>(f) Device and log data.</strong> When you use the Service, we automatically
+      collect basic technical information: IP address, device model and OS version, app version,
+      crash reports, approximate region derived from your IP, and timestamps of requests. We use
+      this to operate, secure, and improve the Service.</p>
+
+      <p><strong>(g) Support communications.</strong> If you contact us, we retain your messages
+      and our replies so we can help you and improve the product.</p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">2. How we use your information</h2>
+      <p>We use your information only to:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li>We don't sell your data to anyone, ever.</li>
-        <li>We don't train AI models on your private data.</li>
-        <li>We don't send email, make calls, or write to your calendar without your explicit approval every single time.</li>
+        <li>Provide the Service: answer your questions, draft messages, find times on your calendar, and take actions you explicitly approve.</li>
+        <li>Maintain continuity: keep your conversations and working memory available across sessions and devices.</li>
+        <li>Operate, secure, and debug the Service: prevent abuse, investigate incidents, fix crashes, and monitor performance.</li>
+        <li>Communicate with you: respond to support requests and send service-related notices (we don't send marketing email unless you opt in).</li>
+        <li>Comply with law: respond to valid legal process and enforce our Terms of Service.</li>
+      </ul>
+      <p>
+        We do <strong>not</strong> sell your personal information, rent it, or share it with
+        advertisers. We do <strong>not</strong> use the contents of your mail, calendar, or
+        conversations to train general-purpose AI models. Any model fine-tuning we do in the
+        future on your data would be strictly opt-in, scoped to your own account, and disclosed
+        before it happens.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">3. Google API Services User Data Policy</h2>
+      <p>
+        Remy's use and transfer to any other app of information received from Google APIs will
+        adhere to the <a class="underline" target="_blank" rel="noopener"
+          href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services
+        User Data Policy</a>, including the Limited Use requirements. Specifically:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>We only request the Google OAuth scopes necessary to provide features you have asked for (for example, reading Gmail to triage your inbox, or reading and writing Calendar events to schedule on your behalf).</li>
+        <li>We only use your Google user data to provide or improve user-facing features that are prominent in the Service.</li>
+        <li>We do not transfer your Google user data to third parties except (i) as necessary to provide or improve user-facing features, (ii) for security purposes, (iii) to comply with applicable law, or (iv) as part of a merger, acquisition, or sale of assets with notice to you.</li>
+        <li>We do not use your Google user data to serve advertisements.</li>
+        <li>We do not allow humans to read your Google user data unless (i) we obtain your explicit consent for specific messages, (ii) it is necessary for security purposes such as investigating abuse, (iii) it is necessary to comply with applicable law, or (iv) the data is aggregated and used for internal operations in a way that cannot identify you.</li>
       </ul>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Deletion</h2>
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">4. Microsoft Graph and Outlook data</h2>
       <p>
-        You can delete your account at any time. Deletion removes every row
-        associated with your account from our database, including OAuth
-        tokens, messages, and the knowledge graph.
+        When you connect a Microsoft account (for example, Outlook), Remy accesses your mail and
+        calendar through Microsoft Graph under the permissions you grant at sign-in. We handle
+        Microsoft data the same way we handle Google data: we use it only to provide the
+        features you've asked for, we do not sell or share it with advertisers, and we do not
+        use it to train general-purpose AI models. Our use of Microsoft Graph data complies with
+        the <a class="underline" target="_blank" rel="noopener"
+          href="https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use">Microsoft APIs
+        Terms of Use</a>. You can review and revoke Remy's access at any time at <a class="underline"
+          target="_blank" rel="noopener"
+          href="https://myaccount.microsoft.com/">myaccount.microsoft.com</a>.
       </p>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Contact</h2>
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">5. Third-party model providers</h2>
       <p>
-        Questions or concerns: <a class="underline" href="mailto:support@hootventures.ai">support@hootventures.ai</a>.
+        To generate replies, Remy sends the portion of your conversation and the relevant context
+        Remy needs to one or more large language model providers (for example, Anthropic and
+        OpenAI). These providers process that data on our behalf under contractual commitments
+        that prohibit them from using it to train their general-purpose models and require them
+        to delete it after a short retention period. We use reputable providers with SOC 2 Type
+        II controls and equivalent enterprise safeguards. A current list of subprocessors is
+        available on request at <a class="underline" href="mailto:privacy@hootventures.ai">privacy@hootventures.ai</a>.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">6. How we share information</h2>
+      <p>We share information only in these limited circumstances:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Service providers and subprocessors</strong> who host our infrastructure, process payments (if and when we introduce paid plans), send transactional email, and deliver AI inference. These providers are contractually bound to use your data only to provide services to us.</li>
+        <li><strong>At your direction,</strong> for example when you approve a draft and ask Remy to send it from your connected account, or when you connect an additional integration.</li>
+        <li><strong>Legal and safety:</strong> to comply with a subpoena, court order, or other valid legal process; to enforce our Terms; or to protect the rights, safety, or property of Remy, our users, or the public.</li>
+        <li><strong>Business transfers:</strong> if we are involved in a merger, acquisition, reorganization, or sale of assets, your information may be transferred as part of that transaction. We will notify you before your information becomes subject to a different privacy policy.</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">7. Data isolation and security</h2>
+      <p>
+        We take security seriously. Our controls include:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Encryption in transit:</strong> all traffic between your device and our servers uses TLS 1.2 or higher.</li>
+        <li><strong>Encryption at rest:</strong> databases and backups are encrypted. OAuth tokens are additionally encrypted at the application layer using AES-256-GCM with keys managed by a dedicated key management service.</li>
+        <li><strong>Row-level isolation:</strong> every table that holds user data uses Postgres row-level security, so the database itself refuses to return another account's rows — not just the application.</li>
+        <li><strong>Approval gating:</strong> Remy never sends an email, books a meeting, or takes any outward-facing action without your explicit in-app approval for that specific action.</li>
+        <li><strong>Access controls:</strong> production access is limited to a small number of engineers, scoped by role, logged, and subject to two-factor authentication. Humans do not read your mail, calendar, or conversations in the ordinary course of operating the Service.</li>
+        <li><strong>Vulnerability management:</strong> we monitor dependencies, patch on a regular cadence, and conduct security reviews before shipping new integrations.</li>
+      </ul>
+      <p>
+        No system is perfectly secure. If you discover a vulnerability, please email
+        <a class="underline" href="mailto:security@hootventures.ai">security@hootventures.ai</a>
+        and we will respond promptly.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">8. Data retention</h2>
+      <p>
+        We retain your data for as long as your account is active, or as needed to provide the
+        Service and comply with our legal obligations. When you delete your account, we delete
+        the personal information we hold about you from our production systems within 30 days
+        and from backups within 90 days. Aggregated or de-identified information that cannot
+        reasonably be used to identify you may be retained for longer.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">9. Your rights and choices</h2>
+      <p>
+        You can:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Access, correct, or export</strong> the information we hold about you.</li>
+        <li><strong>Delete</strong> your account and all associated data from within the app, or by emailing us.</li>
+        <li><strong>Revoke</strong> Remy's access to your Google account at any time at <a class="underline" target="_blank" rel="noopener" href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, or your Microsoft account at <a class="underline" target="_blank" rel="noopener" href="https://myaccount.microsoft.com/">myaccount.microsoft.com</a>.</li>
+        <li><strong>Opt out</strong> of any optional communications from us.</li>
+      </ul>
+      <p>
+        If you are in the European Economic Area, the United Kingdom, or Switzerland, you have
+        additional rights under the GDPR, including the right to object to or restrict certain
+        processing, the right to data portability, and the right to lodge a complaint with a
+        supervisory authority. Our lawful bases for processing are your consent (for connecting
+        your Google or Microsoft account), the performance of a contract (operating the Service
+        you signed up for), and our legitimate interests (securing and improving the Service).
+      </p>
+      <p>
+        If you are a California resident, you have rights under the California Consumer Privacy
+        Act as amended by the CPRA, including the right to know the categories and specific
+        pieces of personal information we have collected about you, the right to delete that
+        information, the right to correct inaccurate information, and the right to opt out of
+        "sale" or "sharing" of personal information. <strong>We do not sell or share your
+        personal information</strong> as those terms are defined under California law. To
+        exercise any of these rights, email us at the address below.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">10. International data transfers</h2>
+      <p>
+        Remy is operated from the United States. If you access the Service from outside the
+        United States, your information will be transferred to, stored in, and processed in the
+        United States or other countries where our service providers operate. We rely on
+        appropriate safeguards for these transfers, including the Standard Contractual Clauses
+        approved by the European Commission where applicable.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">11. Children's privacy</h2>
+      <p>
+        The Service is not directed to children under 13 (or under 16 in the European Economic
+        Area), and we do not knowingly collect personal information from children. If you
+        believe a child has provided us with personal information, please contact us and we will
+        delete it.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">12. Changes to this policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. When we do, we will post the
+        updated policy here and update the effective date above. If the changes are material, we
+        will provide a more prominent notice (for example, an in-app banner or an email).
+        Continued use of the Service after the updated policy takes effect means you accept the
+        changes.
+      </p>
+
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">13. Contact us</h2>
+      <p>
+        Questions, requests, or concerns: <a class="underline" href="mailto:privacy@hootventures.ai">privacy@hootventures.ai</a>.
+        Security reports: <a class="underline" href="mailto:security@hootventures.ai">security@hootventures.ai</a>.
+        General support: <a class="underline" href="mailto:support@hootventures.ai">support@hootventures.ai</a>.
+      </p>
+      <p>
+        Data controller: Hoot Ventures LLC, United States.
       </p>
     </div>
   </main>
 
   <footer class="border-t border-[var(--line)] mt-12">
-    <div class="mx-auto max-w-3xl px-6 py-8 text-sm text-[var(--muted)]">
+    <div class="mx-auto max-w-3xl px-6 py-8 flex items-center justify-between text-sm text-[var(--muted)]">
       <a class="hover:text-[var(--ink)]" href="/">← Back to home</a>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-[var(--ink)]" href="/tos">Terms of Service</a>
+        <a class="hover:text-[var(--ink)]" href="mailto:support@hootventures.ai">Contact</a>
+      </div>
     </div>
   </footer>
 </Layout>
