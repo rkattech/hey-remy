@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const waitlistMailto =
-  'mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0ADevice%20(iPhone%20%2F%20Android)%3A%20';
+  'mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0AiPhone%20model%3A%20';
 
 const steps = [
   {
@@ -63,11 +63,11 @@ const whys = [
 const faq = [
   {
     q: 'Is my data private?',
-    a: "Yes. OAuth tokens are encrypted with AES-GCM before they touch the database. Every table uses row-level security so only you can see your own data. We don't read your email. We don't sell anything.",
+    a: "Remy reads the Gmail and Calendar items needed to answer your requests and provide assistant features. OAuth tokens are encrypted with AES-GCM before they touch the database. Every user table uses row-level security. We don't sell your data or use it for ads.",
   },
   {
     q: 'Do I need to install anything weird?',
-    a: 'Just the app. No CLI, no browser extension, no daemon running on your laptop. iOS and Android.',
+    a: 'Just the iPhone app. No CLI, no browser extension, no daemon running on your laptop.',
   },
   {
     q: 'What does it cost?',
@@ -110,7 +110,7 @@ const faq = [
       <div>
         <div class="inline-flex items-center gap-2 rounded-full bg-[var(--accent-soft)]/60 border border-[var(--accent-soft)] px-3 py-1 text-xs font-medium text-[var(--accent-ink)] mb-8">
           <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"></span>
-          Early access · iOS and Android
+          Early access · iPhone
         </div>
         <h1 class="text-[clamp(2.75rem,6vw,4.75rem)] leading-[1.02] tracking-[-0.02em] font-medium">
           Your own

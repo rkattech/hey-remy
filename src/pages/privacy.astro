@@ -34,7 +34,7 @@ const effectiveDate = 'April 23, 2026';
       </p>
 
       <p class="rounded-xl border border-[var(--line)] bg-[var(--bg-raised)]/60 p-5 text-[var(--ink)]">
-        <strong>The short version.</strong> You sign in with your Google or Microsoft account.
+        <strong>The short version.</strong> You sign in with your Google account.
         Remy stores the OAuth tokens so it can read your mail and calendar on your behalf, plus
         the conversations and the compact knowledge graph Remy builds from them. Only you can see
         your data. We don't sell it, we don't share it with advertisers, and we don't train
@@ -45,22 +45,22 @@ const effectiveDate = 'April 23, 2026';
       <p>We collect the following categories of information:</p>
 
       <p><strong>(a) Account information.</strong> When you create an account by signing in with
-      Google or Microsoft, we receive basic profile information from those providers: your name,
+      Google, we receive basic profile information from Google: your name,
       email address, and profile photo. We store this so we can identify you and display it back
       to you in the app.</p>
 
       <p><strong>(b) OAuth tokens.</strong> When you grant Remy permission to access your Google
-      or Microsoft account, those providers issue us access and refresh tokens. We store these
+      account, Google issues us access and refresh tokens. We store these
       tokens encrypted at rest using AES-256-GCM. They are the keys Remy uses to read your mail
       and calendar when you ask it to. They are never shared with third parties and never
       transmitted in plaintext.</p>
 
       <p><strong>(c) Mail and calendar data.</strong> Depending on which permissions you grant,
       Remy reads email messages, calendar events, and associated metadata (participants, times,
-      subjects, bodies, attachments when relevant) from your connected account. Remy uses this
-      data at request time to answer your questions, draft replies, and propose actions. Remy
-      caches the specific items it needs to complete your current task; it does not build a
-      wholesale mirror of your mailbox.</p>
+      subjects, bodies, and attachments when relevant) from your connected account. Remy uses this
+      data to answer your questions, draft replies, and propose actions. Remy also maintains a
+      bounded source index of relevant message and calendar metadata so it can find the right
+      items without scanning your whole account on every request.</p>
 
       <p><strong>(d) Conversation history.</strong> We store the messages you send to Remy and
       Remy's responses so you can continue a conversation across sessions and devices.</p>
@@ -110,25 +110,17 @@ const effectiveDate = 'April 23, 2026';
         <li>We do not allow humans to read your Google user data unless (i) we obtain your explicit consent for specific messages, (ii) it is necessary for security purposes such as investigating abuse, (iii) it is necessary to comply with applicable law, or (iv) the data is aggregated and used for internal operations in a way that cannot identify you.</li>
       </ul>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">4. Microsoft Graph and Outlook data</h2>
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">4. Future connected services</h2>
       <p>
-        When you connect a Microsoft account (for example, Outlook), Remy accesses your mail and
-        calendar through Microsoft Graph under the permissions you grant at sign-in. We handle
-        Microsoft data the same way we handle Google data: we use it only to provide the
-        features you've asked for, we do not sell or share it with advertisers, and we do not
-        use it to train general-purpose AI models. Our use of Microsoft Graph data complies with
-        the <a class="underline" target="_blank" rel="noopener"
-          href="https://learn.microsoft.com/en-us/legal/microsoft-apis/terms-of-use">Microsoft APIs
-        Terms of Use</a>. You can review and revoke Remy's access at any time at <a class="underline"
-          target="_blank" rel="noopener"
-          href="https://myaccount.microsoft.com/">myaccount.microsoft.com</a>.
+        Remy currently launches with Google account connection. If we add other account providers
+        later, we will update this policy before asking you to connect those accounts.
       </p>
 
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">5. Third-party model providers</h2>
       <p>
         To generate replies, Remy sends the portion of your conversation and the relevant context
-        Remy needs to one or more large language model providers (for example, Anthropic and
-        OpenAI). These providers process that data on our behalf under contractual commitments
+        Remy needs to a large language model provider, currently Google's Gemini. The provider
+        processes that data on our behalf under contractual commitments
         that prohibit them from using it to train their general-purpose models and require them
         to delete it after a short retention period. We use reputable providers with SOC 2 Type
         II controls and equivalent enterprise safeguards. A current list of subprocessors is
@@ -178,7 +170,7 @@ const effectiveDate = 'April 23, 2026';
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>Access, correct, or export</strong> the information we hold about you.</li>
         <li><strong>Delete</strong> your account and all associated data from within the app, or by emailing us.</li>
-        <li><strong>Revoke</strong> Remy's access to your Google account at any time at <a class="underline" target="_blank" rel="noopener" href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>, or your Microsoft account at <a class="underline" target="_blank" rel="noopener" href="https://myaccount.microsoft.com/">myaccount.microsoft.com</a>.</li>
+        <li><strong>Revoke</strong> Remy's access to your Google account at any time at <a class="underline" target="_blank" rel="noopener" href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
         <li><strong>Opt out</strong> of any optional communications from us.</li>
       </ul>
       <p>
@@ -186,7 +178,7 @@ const effectiveDate = 'April 23, 2026';
         additional rights under the GDPR, including the right to object to or restrict certain
         processing, the right to data portability, and the right to lodge a complaint with a
         supervisory authority. Our lawful bases for processing are your consent (for connecting
-        your Google or Microsoft account), the performance of a contract (operating the Service
+        your Google account), the performance of a contract (operating the Service
         you signed up for), and our legitimate interests (securing and improving the Service).
       </p>
       <p>
