@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Remy - The AI assistant for your life, not your job</title>
+<meta name="description" content="Remy takes on the endless life chores that fill your day - calling to book appointments, keeping track of school emails, finding summer camps. Built to bring you solutions, not more questions.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F1F4F8; --surface: #FFFFFF; --surface-sunken: #E9ECF1; --surface-field: #F1F4F8;
+  --ink: #14161B; --ink-2: #646B76; --ink-3: #9AA1AC; --section-label: #7C8490;
+  --hairline: #ECEEF2; --divider: #E3E7ED; --accent: #3056D3; --success: #2C8A63;
+  --warning: #A6741C; --warning-soft: #F6ECD9; --user-bubble: #C9CFF4; --user-bubble-ink: #23283A;
+  --tint: #EBEFFC; --tint-border: #DDE4F8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+/* nav */
+nav { position: sticky; top: 0; z-index: 50; background: rgba(241,244,248,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hairline); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; }
+.logo .mark { width: 31px; height: 31px; object-fit: contain; display: block; }
+.avatar-r { border-radius: 50%; background: #fff; border: 1px solid var(--divider); display: flex; align-items: center; justify-content: center; }
+.avatar-r img { width: 74%; height: 74%; object-fit: contain; display: block; }
+.navcta { display: inline-flex; align-items: center; height: 40px; padding: 0 20px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 600; text-decoration: none; }
+
+/* shared */
+.slabel { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--section-label); }
+.card { background: var(--surface); border-radius: 18px; box-shadow: 0 1px 2px rgba(20,22,27,0.04), 0 8px 28px -12px rgba(20,22,27,0.10); }
+.bubble { max-width: 340px; padding: 12px 16px; border-radius: 18px; font-size: 15.5px; line-height: 1.45; }
+.bubble.user { background: var(--user-bubble); color: var(--user-bubble-ink); border-bottom-right-radius: 6px; margin-left: auto; }
+.bubble.remy { background: var(--surface); color: var(--ink); border-bottom-left-radius: 6px; box-shadow: 0 1px 2px rgba(20,22,27,0.05); }
+.pill { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 18px; border-radius: 999px; font-size: 14px; font-weight: 600; }
+.pill.filled { background: var(--accent); color: #fff; }
+.pill.quiet { color: var(--ink-2); border: 1px solid var(--divider); background: var(--surface); }
+.mini { font-size: 12.5px; line-height: 1.4; color: var(--ink-2); }
+.mini b { color: var(--ink); font-weight: 600; }
+.cap h2 { font-size: 42px; line-height: 1.1; font-weight: 700; letter-spacing: -0.022em; }
+.cap .lead { margin-top: 18px; font-size: 18px; line-height: 1.6; color: var(--ink-2); }
+.cap .lead b { color: var(--ink); font-weight: 700; }
+section { padding: 75px 0; }
+.catch .wrap { max-width: 1280px; }
+.catch { padding-top: 96px; padding-bottom: 226px; }
+.split { display: flex; align-items: center; gap: 90px; }
+.split .cap { flex: 1; }
+.split .art { flex: none; }
+.phone { width: 320px; height: 660px; background: #0c0d10; border-radius: 54px; padding: 10px; box-shadow: 0 30px 70px -20px rgba(20,22,27,0.35), 0 0 0 1px rgba(20,22,27,0.35); flex: none; }
+.phone .screen { width: 100%; height: 100%; border-radius: 44px; background: var(--bg); overflow: hidden; position: relative; }
+.phone .island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 100px; height: 28px; border-radius: 999px; background: #0c0d10; z-index: 5; }
+.homebar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 120px; height: 5px; border-radius: 999px; background: rgba(20,22,27,0.28); z-index: 5; }
+.homebar.light { background: rgba(255,255,255,0.5); }
+
+/* hero */
+.hero { padding: 77px 0 100px; text-align: center; }
+.hero h1 { font-size: 56px; line-height: 1.07; font-weight: 700; letter-spacing: -0.025em; max-width: 840px; margin: 0 auto; }
+.hero h1 .quiet { color: var(--ink-2); }
+.hero .sub { margin: 22px auto 0; font-size: 19px; line-height: 1.55; color: var(--ink-2); max-width: 660px; }
+.hero .cta { margin-top: 28px; display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 28px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 16.5px; font-weight: 600; text-decoration: none; }
+.hero .cta small { font-weight: 500; opacity: 0.7; font-size: 13px; }
+.hero { overflow-x: clip; }
+.montage { margin-top: 42px; display: flex; align-items: center; justify-content: center; }
+.fpanel { flex: none; width: 216px; border-radius: 22px; background: var(--surface); box-shadow: 0 18px 44px -16px rgba(20,22,27,0.25); position: relative; text-align: left; overflow: hidden; display: flex; flex-direction: column; justify-content: center; zoom: 1.1; }
+.fpanel .ph { color: var(--ink); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; padding: 0 18px; position: absolute; top: 16px; left: 0; right: 0; text-align: center; }
+.fpanel .psub { font-size: 12px; line-height: 1.4; color: var(--ink-2); padding: 0 18px 12px; }
+.fpanel.today { height: 336px; margin-right: -26px; z-index: 1; }
+.fpanel.calls { width: 236px; height: 404px; margin-right: -46px; z-index: 2; }
+.fpanel.projects { width: 236px; height: 404px; margin-left: -46px; z-index: 2; }
+.fpanel.browser { height: 336px; margin-left: -26px; z-index: 1; }
+.fpanel.today .ph { padding-right: 40px; }
+.fpanel.today .trow { padding-right: 38px; }
+.fpanel.calls .ph { padding-right: 60px; }
+.fpanel.calls .callbig { margin: 18px auto 18px; transform: translateX(-21px); }
+.fpanel.calls .callcard { margin-right: 58px; }
+.fpanel.calls .holdpill { margin-right: 58px; }
+.fpanel.projects .ph { padding-left: 60px; }
+.fpanel.projects .proj { padding-left: 60px; padding-right: 14px; }
+.fpanel.projects .proj .pt { white-space: nowrap; }
+.fpanel.browser .ph { padding-left: 40px; }
+.fpanel.browser .bwin { margin-left: 40px; }
+.fpanel.browser .snapchip { margin-left: 40px; }
+.bwin { margin: 12px 14px 0; background: var(--surface); border: 1px solid var(--divider); border-radius: 12px; box-shadow: 0 6px 18px -8px rgba(20,22,27,0.18); overflow: hidden; }
+.bbar { display: flex; align-items: center; gap: 4px; padding: 9px 10px; background: var(--surface-field); }
+.bdot { width: 7px; height: 7px; border-radius: 50%; background: #D3D8E0; flex: none; }
+.burl { margin-left: 6px; flex: 1; background: var(--surface); border-radius: 6px; font-size: 9.5px; color: var(--ink-2); padding: 4px 8px; }
+.bfield { display: flex; justify-content: space-between; padding: 9px 11px; font-size: 11px; border-bottom: 1px solid var(--hairline); }
+.bfield span { color: var(--ink-3); }
+.bfield b { color: var(--ink); font-weight: 600; }
+.bprog { margin: 12px 11px 0; height: 5px; border-radius: 999px; background: var(--surface-sunken); overflow: hidden; }
+.bprog i { display: block; height: 100%; width: 78%; background: var(--accent); border-radius: 999px; }
+.bstat { padding: 9px 11px 11px; font-size: 10.5px; color: var(--ink-2); }
+
+.callbig { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(160deg,#5B7BFF,#3056D3); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px -8px rgba(48,86,211,0.45); }
+.callbig svg { width: 32px; height: 32px; }
+.callring { text-align: center; font-size: 12px; color: var(--ink-2); }
+.callcard { margin: 16px 14px 0; background: var(--surface-field); border-radius: 14px; padding: 12px 13px; }
+.callcard .cn { font-size: 13px; font-weight: 700; color: var(--ink); }
+.callcard .cq { font-size: 12px; line-height: 1.45; color: var(--ink-2); margin-top: 5px; }
+.holdpill { margin: 12px 14px 0; display: flex; align-items: center; justify-content: center; height: 38px; border-radius: 999px; background: linear-gradient(160deg,#5B7BFF,#3056D3); color: #fff; font-size: 12.5px; font-weight: 600; }
+.proj { display: flex; align-items: flex-start; gap: 10px; padding: 10px 16px; }
+.proj + .proj { border-top: 1px solid var(--hairline); }
+.proj .pic { width: 30px; height: 30px; border-radius: 9px; background: var(--tint); display: flex; align-items: center; justify-content: center; font-size: 15px; flex: none; }
+.proj .pt { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+.proj .pd { font-size: 11px; line-height: 1.35; color: var(--ink-2); margin-top: 2px; }
+.proj .ptm { margin-left: auto; font-size: 10px; color: var(--ink-3); flex: none; padding-top: 2px; }
+.trow { display: flex; gap: 10px; padding: 10px 16px; align-items: flex-start; }
+.trow + .trow { border-top: 1px solid var(--hairline); }
+.trow .tt { font-size: 11px; font-weight: 700; color: var(--accent); flex: none; width: 34px; padding-top: 2px; }
+.trow .tx { font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+.trow .tx b { color: var(--ink); font-weight: 600; }
+.flyer { margin: 6px 14px 0; background: #FFFDF8; border-radius: 10px; padding: 14px 13px; box-shadow: 0 6px 18px -8px rgba(90,70,30,0.3); transform: rotate(-1.5deg); }
+.flyer .f1 { font-size: 15px; font-weight: 800; letter-spacing: 0.01em; }
+.flyer .f2 { font-size: 12px; color: var(--ink-2); margin-top: 4px; line-height: 1.4; }
+.snapchip { margin: 12px 14px 0; display: flex; align-items: center; gap: 8px; background: var(--surface-field); border-radius: 999px; padding: 8px 13px; font-size: 11.5px; font-weight: 600; }
+.snapchip svg { flex: none; }
+.mphone { width: 300px; height: 620px; background: #0c0d10; border-radius: 50px; padding: 9px; z-index: 3; flex: none; box-shadow: 0 26px 60px -18px rgba(20,22,27,0.38); }
+.mphone .screen { width: 100%; height: 100%; border-radius: 41px; background: var(--bg); overflow: hidden; padding: 52px 12px 0; position: relative; text-align: left; }
+.mphone .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 92px; height: 26px; border-radius: 999px; background: #0c0d10; }
+.mphone .bubble { font-size: 14px; padding: 10px 13px; }
+.composer { position: absolute; bottom: 20px; left: 12px; right: 12px; display: flex; align-items: center; gap: 8px; }
+.composer .field { flex: 1; height: 40px; border-radius: 999px; background: var(--surface); border: 1px solid var(--divider); display: flex; align-items: center; padding: 0 16px; font-size: 13.5px; color: var(--ink-3); }
+.composer .mic { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--divider); display: flex; align-items: center; justify-content: center; color: var(--ink-2); }
+.mphone .bubble { font-size: 13.5px; padding: 10px 13px; max-width: 92%; }
+.mphone .bubble + .bubble { margin-top: 8px; }
+.appr-sm { margin: 8px 4px 0; background: var(--surface); border-radius: 12px; padding: 10px; box-shadow: 0 1px 2px rgba(20,22,27,0.06); }
+.appr-sm .ctx { font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--section-label); text-transform: uppercase; }
+.appr-sm .d { background: var(--surface-field); border-radius: 8px; padding: 8px; font-size: 11.5px; line-height: 1.4; margin-top: 6px; }
+.appr-sm .hold { margin-top: 8px; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 600; }
+.mrowline { display: flex; gap: 7px; align-items: flex-start; padding: 5px 0; }
+.mrowline svg { width: 12px; height: 12px; flex: none; margin-top: 2px; }
+.vrow { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
+.vmic { width: 22px; height: 22px; border-radius: 50%; background: rgba(35,40,58,0.82); color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+.vbars { display: flex; align-items: center; gap: 2.5px; height: 15px; }
+.vbars i { width: 2.5px; border-radius: 2px; background: rgba(35,40,58,0.5); display: block; }
+.plist { margin: 8px 4px 0; background: var(--surface); border-radius: 12px; padding: 11px 13px 4px; box-shadow: 0 1px 2px rgba(20,22,27,0.06); }
+.plist .ctx { font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; color: var(--section-label); text-transform: uppercase; padding-bottom: 3px; }
+.prow { display: flex; align-items: center; gap: 9px; padding: 7px 0; font-size: 13px; color: var(--ink); font-weight: 500; }
+.prow + .prow { border-top: 1px solid var(--hairline); }
+.pbox { width: 15px; height: 15px; border-radius: 5px; border: 1.5px solid var(--divider); flex: none; display: flex; align-items: center; justify-content: center; background: var(--surface); }
+.pbox.on { background: var(--accent); border-color: var(--accent); }
+.pfull { display: flex; align-items: center; gap: 4px; padding: 8px 0; font-size: 12px; font-weight: 600; color: var(--accent); border-top: 1px solid var(--hairline); }
+.mphone .screen.chatcenter { display: flex; flex-direction: column; justify-content: center; padding: 46px 14px 22px; }
+.chatcenter .bubble + .bubble { margin-top: 9px; }
+.ecard { margin: 8px 4px 0; background: var(--surface); border-radius: 12px; padding: 10px 12px; box-shadow: 0 1px 2px rgba(20,22,27,0.06); display: flex; align-items: center; gap: 9px; }
+.ecard .eav2 { width: 27px; height: 27px; border-radius: 50%; background: var(--surface-sunken); font-size: 10.5px; font-weight: 700; color: var(--ink-2); display: flex; align-items: center; justify-content: center; flex: none; }
+.ecard .et { font-size: 11.5px; font-weight: 600; line-height: 1.35; color: var(--ink); }
+.ecard .es { font-size: 10.5px; color: var(--ink-2); margin-top: 1px; }
+.ecard .chev { margin-left: auto; color: var(--ink-3); font-size: 17px; font-weight: 600; }
+.composer .rbtn { width: 34px; height: 34px; border-radius: 50%; background: var(--surface); border: 1px solid var(--divider); display: flex; align-items: center; justify-content: center; color: var(--ink-2); flex: none; }
+.composer .rbtn.accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+.composer .vb { display: flex; align-items: center; gap: 2px; height: 12px; }
+.composer .vb i { width: 2.5px; border-radius: 2px; background: #fff; display: block; }
+
+/* catch */
+.emailwrap { width: 560px; position: relative; }
+.emailwrap .card { padding: 26px 30px 56px; }
+.efrom { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--divider); }
+.eav { width: 38px; height: 38px; border-radius: 50%; background: var(--surface-sunken); color: var(--ink-2); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.ewho { font-size: 15px; font-weight: 600; }
+.esubj { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
+.ewhen { margin-left: auto; font-size: 12.5px; color: var(--ink-3); }
+.emailwrap p { font-size: 14px; line-height: 1.6; color: var(--ink-3); margin-top: 14px; }
+.emailwrap p mark { background: var(--warning-soft); color: var(--ink); padding: 2px 5px; border-radius: 4px; font-weight: 600; }
+.nudge { position: absolute; right: -70px; bottom: -94px; width: 420px; background: var(--surface); border-radius: 18px; box-shadow: 0 30px 70px -14px rgba(20,22,27,0.42), 0 4px 14px rgba(20,22,27,0.10); padding: 16px 18px; border: 1px solid var(--divider); }
+.nudge .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.nav-r { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+.nudge .nm { font-size: 14px; font-weight: 700; }
+.nudge .tm { margin-left: auto; font-size: 12px; color: var(--ink-3); }
+.nudge > p { font-size: 15.5px; line-height: 1.5; }
+.nudge .acts { display: flex; gap: 10px; margin-top: 13px; justify-content: flex-end; }
+.nudge p { color: var(--ink-2); }
+.nudge p b { color: var(--ink); }
+.filechip { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 9px 12px; border: 1px solid var(--divider); border-radius: 12px; background: var(--bg); }
+.filechip .fico { width: 30px; height: 36px; border-radius: 6px; background: #fff; border: 1px solid var(--divider); position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; }
+.filechip .fico span { font-size: 8px; font-weight: 800; letter-spacing: 0.04em; color: #d23c3c; }
+.filechip .fname { font-size: 13px; font-weight: 600; color: var(--ink); }
+.filechip .fmeta { font-size: 12px; color: var(--ink-3); margin-top: 1px; }
+
+/* proactive connection */
+.connect .wrap { max-width: 1280px; }
+.connect { padding-bottom: 136px; }
+.conn { width: 640px; }
+.conn .sources { display: flex; gap: 26px; align-items: stretch; justify-content: center; }
+.conn .srcwrap { display: flex; flex-direction: column; width: 270px; }
+.conn .srclbl { font-size: 12.5px; color: var(--ink-3); margin-bottom: 8px; padding-left: 4px; }
+.conn .srccard { flex: 1; display: flex; align-items: center; background: var(--surface); border-radius: 14px; border: 1px solid var(--hairline); box-shadow: 0 1px 2px rgba(20,22,27,0.04), 0 8px 22px -14px rgba(20,22,27,0.10); padding: 13px 15px; opacity: 0.94; }
+.conn .erow2 { display: flex; align-items: center; gap: 10px; }
+.conn .eav2 { width: 28px; height: 28px; border-radius: 50%; background: var(--surface-sunken); color: var(--ink-2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex: none; }
+.conn .ewho2 { font-size: 13px; font-weight: 700; }
+.conn .esub2 { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.conn .mrow2 { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.conn .mrow2 b { color: var(--ink); font-weight: 700; }
+.conn .msub2 { font-size: 12.5px; color: var(--ink-3); }
+.conn .wires { display: block; margin: -2px auto; }
+.conn .bigcard { width: 540px; margin: 0 auto; background: var(--surface); border-radius: 20px; border: 1px solid var(--divider); box-shadow: 0 34px 80px -16px rgba(20,22,27,0.42), 0 4px 14px rgba(20,22,27,0.10); padding: 20px 24px; }
+.conn .bh { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.conn .bnm { font-size: 15px; font-weight: 700; }
+.conn .btm { margin-left: auto; font-size: 12px; color: var(--ink-3); }
+.conn .bigcard p { font-size: 17px; line-height: 1.5; color: var(--ink-2); }
+.conn .bigcard p b { color: var(--ink); }
+.conn .blink { font-size: 17px; font-weight: 600; color: var(--accent); text-decoration: none; }
+
+/* phone-call section */
+.pill.dark { background: var(--ink); color: #fff; }
+.callsec .chain { width: 600px; display: flex; flex-direction: column; gap: 16px; zoom: 0.86; }
+.callsec .cc { background: var(--surface); border-radius: 16px; border: 1px solid var(--hairline); padding: 16px 19px; }
+.callsec .slabel2 { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--section-label); }
+.callsec .plan { width: 450px; align-self: flex-start; box-shadow: 0 1px 2px rgba(20,22,27,0.04), 0 12px 32px -14px rgba(20,22,27,0.14); }
+.callsec .plan .pt2 { font-size: 15.5px; font-weight: 700; margin-top: 9px; }
+.callsec .plan .pline { display: flex; align-items: flex-start; gap: 9px; margin-top: 9px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.callsec .plan .pline svg { flex: none; margin-top: 3px; }
+.callsec .approve { margin-top: 14px; }
+.callsec .approve .pill { height: 35px; font-size: 13.5px; }
+.callsec .transcript { width: 540px; align-self: flex-end; border: 1px solid var(--divider); box-shadow: 0 30px 70px -14px rgba(20,22,27,0.40), 0 4px 14px rgba(20,22,27,0.09); padding: 18px 20px; }
+.callsec .th2 { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; }
+.callsec .play2 { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex: none; }
+.callsec .play2 svg { width: 13px; height: 13px; margin-left: 2px; }
+.callsec .cwho { font-size: 15px; font-weight: 700; }
+.callsec .cmeta { font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
+.callsec .turns { display: flex; flex-direction: column; gap: 8px; }
+.callsec .turn { max-width: 88%; padding: 9px 13px; border-radius: 13px; font-size: 14px; line-height: 1.45; }
+.callsec .turn .tw { font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
+.callsec .turn.them { background: var(--surface-field); color: var(--ink-2); align-self: flex-start; border-bottom-left-radius: 4px; }
+.callsec .turn.remy { background: var(--tint); color: var(--ink); align-self: flex-end; border-bottom-right-radius: 4px; }
+.callsec .calcard { width: 430px; align-self: flex-start; padding: 13px 16px; border: 1px solid var(--divider); box-shadow: 0 16px 44px -16px rgba(20,22,27,0.22), 0 2px 8px rgba(20,22,27,0.06); }
+.callsec .ct2 { font-size: 15px; font-weight: 700; }
+.callsec .cwhen { font-size: 13.5px; color: var(--ink-2); margin-top: 3px; }
+.callsec .cwhere { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.callsec .calfoot { display: flex; align-items: center; gap: 7px; margin-top: 10px; font-size: 12.5px; color: var(--success); font-weight: 600; }
+
+/* features */
+.features h2 { font-size: 42px; font-weight: 700; letter-spacing: -0.022em; }
+.grid { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.tile .img { height: 360px; border-radius: 20px; background: #E9EDF3; padding: 20px 16px; display: flex; flex-direction: column; gap: 10px; justify-content: center; overflow: hidden; }
+.tile .cap2 { margin-top: 16px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+
+/* ease section (close-ups) */
+.ease h2 { font-size: 42px; font-weight: 700; letter-spacing: -0.022em; }
+.egrid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.etile .img2 { height: 300px; border-radius: 20px; background: #E9EDF3; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+.etile .cap2 { margin-top: 16px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.etile .cap2 b { color: var(--ink); font-weight: 700; }
+/* tile 1: composer close-up */
+.composer2 { width: 100%; display: flex; align-items: flex-end; gap: 10px; }
+.cplus { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 1px solid var(--divider); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--ink-2); flex: none; }
+.cfield { flex: 1; background: var(--surface); border: 1px solid var(--divider); border-radius: 22px; padding: 11px 44px 11px 16px; font-size: 15px; line-height: 1.4; color: var(--ink); position: relative; box-shadow: 0 1px 2px rgba(20,22,27,0.04); }
+.cfield .caret { display: inline-block; width: 2px; height: 16px; background: var(--accent); vertical-align: -3px; margin-left: 1px; }
+.cfield .cmic { position: absolute; right: 14px; bottom: 10px; }
+/* tile 2: hold button close-up */
+.holdwrap { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.holdlbl { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--section-label); }
+.holdbig { position: relative; overflow: hidden; height: 54px; width: 230px; border-radius: 999px; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16.5px; font-weight: 600; }
+.holdbig .fillbar { position: absolute; left: 0; top: 0; bottom: 0; width: 62%; background: rgba(255,255,255,0.16); }
+.holdbig span { position: relative; }
+.holdrow { display: flex; align-items: center; gap: 12px; }
+.cancelbig { height: 54px; padding: 0 24px; border-radius: 999px; border: 1px solid var(--divider); background: var(--surface); color: var(--ink-2); display: flex; align-items: center; font-size: 15px; font-weight: 600; }
+/* start strip */
+.startrow { margin-top: 46px; display: flex; align-items: center; justify-content: center; gap: 26px; flex-wrap: wrap; }
+.step2 { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.step2 i { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--ink-3); color: var(--ink-2); font-size: 12px; font-weight: 700; font-style: normal; display: flex; align-items: center; justify-content: center; }
+.stail { font-size: 15px; color: var(--ink-3); }
+
+/* privacy centered */
+.privacy h2 { font-size: 42px; line-height: 1.1; font-weight: 700; letter-spacing: -0.022em; }
+.plede { margin: 22px auto 0; max-width: 780px; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+.pmech { margin-top: 44px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.pchecks { margin-top: 22px; display: flex; justify-content: center; gap: 42px; flex-wrap: wrap; }
+.pc { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 600; color: var(--ink); }
+.pc svg { flex: none; }
+.tracewrap { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+.traceline { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--ink-3); }
+.pdot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); opacity: 0.75; }
+.tile .cap2 b { color: var(--ink); font-weight: 700; }
+.tile .bubble { font-size: 13px; padding: 10px 13px; max-width: 100%; }
+.rc { background: var(--surface); border-radius: 14px; box-shadow: 0 2px 10px -4px rgba(20,22,27,0.1); padding: 12px 14px; }
+.rc .slabel { display: block; margin-bottom: 8px; }
+.ck { display: flex; gap: 8px; align-items: flex-start; margin-top: 7px; }
+.ck svg { width: 14px; height: 14px; flex: none; margin-top: 2px; }
+.hold-sm { display: inline-flex; align-items: center; height: 32px; padding: 0 15px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 12.5px; font-weight: 600; margin-top: 10px; }
+.d-sm { background: var(--surface-field); border-radius: 9px; padding: 9px 11px; font-size: 12.5px; line-height: 1.4; margin-top: 8px; }
+.callh { display: flex; align-items: center; gap: 9px; }
+.callh .play { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex: none; }
+.callh .play svg { width: 11px; height: 11px; margin-left: 1px; }
+.who { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); margin-top: 10px; }
+
+/* projects */
+.room { width: 540px; }
+.room .card { padding: 0 0 8px; overflow: hidden; }
+.rh { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-bottom: 1px solid var(--divider); }
+.rh .ric { width: 38px; height: 38px; border-radius: 12px; background: var(--tint); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.rh .rt { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.rh .rs { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.dstamp { font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); padding: 16px 22px 4px; }
+.step { display: flex; gap: 10px; padding: 7px 22px; align-items: flex-start; }
+.step svg { width: 15px; height: 15px; flex: none; margin-top: 3px; }
+.step p { font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.step p b { color: var(--ink); font-weight: 600; }
+.decision { margin: 14px 22px 10px; border: 1px solid var(--tint-border); background: var(--tint); border-radius: 14px; padding: 13px 15px; }
+.decision .dl { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
+.decision p { font-size: 14.5px; line-height: 1.5; margin-top: 6px; }
+.decision .acts { display: flex; gap: 10px; margin-top: 11px; }
+
+/* privacy */
+.privacy .nb { width: 500px; }
+.privacy .nb .card { padding: 22px 0 10px; }
+.privacy .nb .slabel { padding: 0 24px 12px; display: block; }
+.mem { padding: 13px 24px; display: flex; gap: 12px; align-items: center; }
+.mem + .mem { border-top: 1px solid var(--divider); }
+.mem p { font-size: 16px; line-height: 1.45; flex: 1; }
+.mem p span { color: var(--ink-2); }
+.mem .del { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--divider); color: var(--ink-3); display: flex; align-items: center; justify-content: center; flex: none; font-size: 14px; }
+.mem.deleting { background: #FDF2F2; }
+.mem.deleting p { text-decoration: line-through; color: var(--ink-3); }
+.mem.deleting .del { background: #C24040; border-color: #C24040; color: #fff; }
+.promises { margin-top: 26px; background: var(--surface); border-radius: 16px; padding: 4px 0; box-shadow: 0 1px 2px rgba(20,22,27,0.04); }
+.pr { display: flex; gap: 11px; align-items: center; padding: 12px 18px; }
+.pr + .pr { border-top: 1px solid var(--divider); }
+.pr svg { width: 17px; height: 17px; flex: none; }
+.pr p { font-size: 15.5px; font-weight: 600; }
+.pr p span { color: var(--ink-2); font-weight: 400; }
+
+/* faq */
+.faq { padding-bottom: 69px; }
+.faqrow { padding: 22px 28px; }
+.faqrow + .faqrow { border-top: 1px solid var(--divider); }
+.faqrow .fq { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.faqrow .fa { margin-top: 8px; font-size: 15.5px; line-height: 1.6; color: var(--ink-2); }
+
+/* close */
+.close { padding: 75px 0 120px; text-align: center; }
+.close h2 { font-size: 48px; line-height: 1.08; font-weight: 700; letter-spacing: -0.024em; max-width: 700px; margin: 0 auto; }
+.close .quiet { color: var(--ink-2); }
+.close .cta { margin-top: 30px; display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 30px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 17px; font-weight: 600; text-decoration: none; }
+.close .fine { margin-top: 16px; font-size: 13.5px; color: var(--ink-3); }
+footer { border-top: 1px solid var(--divider); padding: 34px 0 44px; }
+footer .wrap { display: flex; align-items: center; justify-content: space-between; }
+footer .flinks { display: flex; gap: 26px; font-size: 14px; color: var(--ink-2); }
+footer .flinks a { color: var(--ink-2); text-decoration: none; }
+footer .byline { font-size: 13px; color: var(--ink-3); }
+.checkicon path { stroke: var(--success); }
+</style></head>
+<body>
+
+<nav><div class="wrap">
+  <div class="logo"><img class="mark" src="/remy-mark.png" alt="">Remy</div>
+  <a class="navcta" href="mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0AiPhone%20model%3A%20">Get early access</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <h1>Meet Remy. <span class="quiet">The AI assistant for your life, not your job.</span></h1>
+  <p class="sub">Remy takes on the endless life chores that fill your day - calling to book appointments, keeping track of school emails, finding summer camps. Built to bring you solutions, not more questions.</p>
+  <a class="cta" href="mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0AiPhone%20model%3A%20">Get early access - free&nbsp;&nbsp;<small>iPhone beta</small></a>
+  <div class="montage">
+    <div class="fpanel today">
+      <div class="ph">Today</div>
+      <div class="trow"><div class="tt">2:30</div><div class="tx"><b>Dr. Osei</b> - you're driving</div></div>
+      <div class="trow"><div class="tt">5:30</div><div class="tx"><b>Practice pickup</b></div></div>
+      <div class="trow"><div class="tt">7:00</div><div class="tx"><b>Camp deposit</b> - staged for your OK</div></div>
+      <div class="trow"><div class="tt">&nbsp;</div><div class="tx"><b>Car registration</b> - on Saturday's list</div></div>
+    </div>
+    <div class="fpanel calls">
+      <div class="ph">Phone calls</div>
+      <div class="callbig"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+      <div class="callcard">
+        <div class="cn">Riverside Pediatrics</div>
+        <div class="cq">"We can do Thursday at 3:40."</div>
+      </div>
+      <div class="holdpill">Hold to approve</div>
+    </div>
+    <div class="mphone"><div class="screen chatcenter"><div class="island"></div>
+      <div class="bubble user">
+        <div class="vrow"><div class="vmic"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="5.5" y="1.5" width="5" height="9" rx="2.5"/><path d="M3 8a5 5 0 0 0 10 0M8 13v2"/></svg></div><div class="vbars"><i style="height:5px"></i><i style="height:10px"></i><i style="height:14px"></i><i style="height:7px"></i><i style="height:12px"></i><i style="height:15px"></i><i style="height:6px"></i><i style="height:11px"></i><i style="height:8px"></i><i style="height:13px"></i><i style="height:5px"></i><i style="height:9px"></i><i style="height:12px"></i><i style="height:6px"></i></div></div>
+        hey remy can you tell me what is the packing list for Chloe's overnight school trip next week?
+      </div>
+      <div class="bubble remy">Found <b>Chincoteague Info + Packing List</b> in your email. Here's your list:</div>
+      <div class="plist">
+        <div class="ctx">Chloe · Chincoteague overnight</div>
+        <div class="prow"><div class="pbox on"><svg width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13.5 4" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Sleeping bag + pillow</div>
+        <div class="prow"><div class="pbox on"><svg width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5L13.5 4" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Rain jacket</div>
+        <div class="prow"><div class="pbox"></div>Two water bottles</div>
+        <div class="prow"><div class="pbox"></div>Flashlight</div>
+        <div class="prow"><div class="pbox"></div>Sunscreen + bug spray</div>
+        <div class="pfull">Full list · 14 items <span style="font-size:14px">›</span></div>
+      </div>
+      <div class="homebar"></div>
+    </div></div>
+    <div class="fpanel projects">
+      <div class="ph">Projects</div>
+      <div class="proj"><div class="pic">🏕️</div><div><div class="pt">Summer camps</div><div class="pd">Two spots held - deposit Friday</div></div></div>
+      <div class="proj"><div class="pic">💊</div><div><div class="pt">Mom's refills</div><div class="pd">Ready Thursday, on your way</div></div></div>
+      <div class="proj"><div class="pic">🛂</div><div><div class="pt">Passport renewal</div><div class="pd">Form filled - needs signature</div></div></div>
+      <div class="proj"><div class="pic">🎂</div><div><div class="pt">Sam's birthday</div><div class="pd">Park quoted for ten kids</div></div></div>
+    </div>
+    <div class="fpanel browser">
+      <div class="ph">Browser use</div>
+      <div class="bwin">
+        <div class="bbar"><span class="bdot"></span><span class="bdot"></span><span class="bdot"></span><div class="burl">fairview.gov/renew</div></div>
+        <div class="bfield"><span>Plate</span><b>7KDX412</b></div>
+        <div class="bfield"><span>Renewal</span><b>12 months</b></div>
+        <div class="bprog"><i></i></div>
+        <div class="bstat" style="color: var(--success);">Filling it in for you…</div>
+      </div>
+      <div class="snapchip"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="#2C8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready for your OK</div>
+    </div>
+  </div>
+</div></header>
+
+<section class="catch"><div class="wrap split">
+  <div class="art emailwrap">
+    <div class="card">
+      <div class="efrom">
+        <div class="eav">M</div>
+        <div><div class="ewho">Maplewood Elementary PTA</div><div class="esubj">Spring Newsletter - Week 29 🌷</div></div>
+        <div class="ewhen">Tue · 6:12 AM</div>
+      </div>
+      <p>Dear Maplewood families, what a wonderful week it has been! The book fair raised a record $2,340 for our library, and we want to thank every volunteer who gave their time.</p>
+      <p><mark>Fall soccer registration closes this Friday, May 30</mark> - forms are on the athletics portal.</p>
+      <p>In other news: picture day retakes are being scheduled for early June, the lost and found is overflowing again (please come claim jackets!), and the gymnasium renovation continues on schedule, so please keep using the Oak Street entrance until further notice.</p>
+    </div>
+    <div class="nudge">
+      <div class="head"><div class="avatar-r" style="width:30px;height:30px;"><img src="/remy-mark.png" alt=""></div><div class="nm">Remy</div><div class="tm">now</div></div>
+      <p>One thing in Tuesday's PTA newsletter: <b>Nathan's soccer registration closes Friday.</b> I pulled the form for you.</p>
+      <div class="filechip"><div class="fico"><span>PDF</span></div><div><div class="fname">Soccer registration 2026.pdf</div><div class="fmeta">1 page · from the athletics portal</div></div></div>
+      <div class="acts"><span class="pill quiet">Remind me Thursday</span><span class="pill quiet">Not this one</span></div>
+    </div>
+  </div>
+  <div class="cap">
+    <h2>It catches what you'd miss.</h2>
+    <p class="lead"><b>Remy reads the long emails so you don't miss the important stuff</b> - newsletters, school threads, fine print - and proactively shares the one line that actually matters.</p>
+  </div>
+</div></section>
+
+<section class="connect"><div class="wrap split">
+  <div class="cap">
+    <h2>Helpful before you ask.</h2>
+    <p class="lead"><b>Remy keeps watch around the clock so nothing sneaks up on you</b> - renewals, deadlines, refills, trips - and gives you a heads-up while there's still time to act.</p>
+  </div>
+  <div class="art conn">
+    <div class="sources">
+      <div class="srcwrap">
+        <div class="srclbl">From your email</div>
+        <div class="srccard">
+          <div class="erow2"><div class="eav2">T</div><div><div class="ewho2">TAP Air Portugal</div><div class="esub2">Trip to Lisbon · departs April 18</div></div></div>
+        </div>
+      </div>
+      <div class="srcwrap">
+        <div class="srclbl">From Remy's memory</div>
+        <div class="srccard">
+          <div class="mrow2">Your passport expires <b>March 6</b><br><span class="msub2">you mentioned it last fall</span></div>
+        </div>
+      </div>
+    </div>
+    <svg class="wires" width="640" height="72" viewBox="0 0 640 72" fill="none">
+      <path d="M172 0 C172 44, 320 26, 320 66" stroke="#C5CEEC" stroke-width="1.8"/>
+      <path d="M468 0 C468 44, 320 26, 320 66" stroke="#C5CEEC" stroke-width="1.8"/>
+      <circle cx="320" cy="66" r="4" fill="#3056D3"/>
+    </svg>
+    <div class="bigcard">
+      <div class="bh"><div class="avatar-r" style="width:30px;height:30px;"><img src="/remy-mark.png" alt=""></div><div class="bnm">Remy</div><div class="btm">now</div></div>
+      <p>hey - your Lisbon flights just came through ✈️ and I remember <b>your passport expires March 6 - five weeks before you fly ⚠️</b> Renewal usually takes 6-7 weeks, so here's the site if you want to kick it off: <a class="blink" href="https://travel.state.gov" target="_blank" rel="noopener">travel.state.gov ›</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section class="callsec"><div class="wrap split">
+  <div class="art">
+    <div class="chain">
+      <div class="cc plan">
+        <span class="slabel2">Phone call · ready to place</span>
+        <div class="pt2">Luna Salon - book your haircut</div>
+        <div class="pline"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="#2C8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ask for Dana - Saturday morning, or Tuesday after 5</div>
+        <div class="pline"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke="#2C8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>If neither works, come back with their next openings</div>
+        <div class="approve"><span class="pill dark">Hold to approve</span><span class="pill quiet" style="margin-left:8px; height:35px; font-size:13.5px;">Cancel</span></div>
+      </div>
+      <div class="cc transcript">
+        <div class="th2">
+          <div class="play2"><svg viewBox="0 0 16 16" fill="#fff"><path d="M3 2l11 6-11 6z"/></svg></div>
+          <div>
+            <div class="cwho">Luna Salon</div>
+            <div class="cmeta">Call transcript · 2 min</div>
+          </div>
+        </div>
+        <div class="turns">
+          <div class="turn remy"><div class="tw">Remy</div>Hi! I'm Remy, an AI assistant calling on behalf of Alex - is Dana free for a haircut Saturday morning, or Tuesday after 5?</div>
+          <div class="turn them"><div class="tw">Salon</div>We have Saturday at 10:30 with Dana, or Tuesday at 5:30.</div>
+          <div class="turn remy"><div class="tw">Remy</div>Saturday at 10:30 works - let's book that one.</div>
+          <div class="turn them"><div class="tw">Salon</div>Perfect, you're all set for Saturday.</div>
+        </div>
+      </div>
+      <div class="cc calcard">
+        <div class="ct2">Haircut · Luna Salon</div>
+        <div class="cwhen">Saturday · 10:30 AM</div>
+        <div class="cwhere">with Dana · 45 min</div>
+        <div class="calfoot"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2C8A63" stroke-width="1.6"/><path d="M6 10.5l2.8 2.8L14.5 7" stroke="#2C8A63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Booked · added to the calendar by Remy</div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">
+    <h2>It even makes phone calls.</h2>
+    <p class="lead"><b>Remy makes the calls you keep putting off</b> - the salon, the restaurant, the doctor's office - waits on hold, and comes back with it done.</p>
+  </div>
+</div></section>
+
+<section class="ease"><div class="wrap">
+  <h2>Nothing new to learn.</h2>
+  <div class="egrid">
+    <div class="etile">
+      <div class="img2">
+        <div class="composer2">
+          <div class="cplus">＋</div>
+          <div class="cfield">wat time is nathans practice thurs also cupcakes reminder wed am<span class="caret"></span>
+            <span class="cmic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#646B76" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span>
+          </div>
+        </div>
+      </div>
+      <div class="cap2"><b>Just say it.</b> Typos, voice notes, half-thoughts. If you can text a friend, you already know how to use Remy.</div>
+    </div>
+    <div class="etile">
+      <div class="img2">
+        <div class="holdwrap">
+          <div class="holdlbl">Phone call · ready to place</div>
+          <div class="holdrow">
+            <div class="holdbig"><div class="fillbar"></div><span>Hold to approve</span></div>
+            <div class="cancelbig">Cancel</div>
+          </div>
+        </div>
+      </div>
+      <div class="cap2"><b>It asks before it acts.</b> Every email, booking, and call is shown to you first. Nothing happens until you press and hold to approve.</div>
+    </div>
+    <div class="etile">
+      <div class="img2">
+      <div class="tracewrap">
+          <div class="traceline"><span class="pdot"></span>checking your calendar…</div>
+          <div class="rc" style="width: 100%;">
+            <div class="ck" style="margin-top: 0;"><svg class="checkicon" viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M2.5 8.5l3.5 3.5 7-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="mini" style="font-size: 13.5px;"><b>Practice is 5:30</b> - field 4 this week</div></div>
+            <div class="ck"><svg class="checkicon" viewBox="0 0 16 16" fill="none" width="15" height="15"><path d="M2.5 8.5l3.5 3.5 7-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="mini" style="font-size: 13.5px;"><b>Cupcake reminder set</b> - Wed 7 AM</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cap2"><b>You can watch it work.</b> Remy says what it's doing while it does it - and everything comes back as something you can read.</div>
+    </div>
+  </div>
+  <div class="startrow">
+    <div class="step2"><i>1</i>Install Remy</div>
+    <div class="step2"><i>2</i>Sign in with Google</div>
+    <div class="step2"><i>3</i>Say hi</div>
+    <div class="stail">That's the whole setup.</div>
+  </div>
+</div></section>
+
+<section class="projects"><div class="wrap split">
+  <div class="art room">
+    <div class="card">
+      <div class="rh"><div class="ric">🏠</div><div><div class="rt">Fix the leaking gutter</div><div class="rs">Remy has been on this for 3 days</div></div></div>
+      <div class="dstamp">Monday</div>
+      <div class="step"><svg class="checkicon" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p><b>Asked three local contractors</b> for quotes, with your photos of the damage</p></div>
+      <div class="dstamp">Tuesday</div>
+      <div class="step"><svg class="checkicon" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p><b>Mike quoted $450</b> - licensed, can come Thursday morning</p></div>
+      <div class="step"><svg class="checkicon" viewBox="0 0 16 16" fill="none"><path d="M2.5 8.5l3.5 3.5 7-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p><b>Second quote came in at $700</b> - two-week wait</p></div>
+      <div class="dstamp">Today</div>
+      <div class="decision">
+        <div class="dl">Your call</div>
+        <p>Mike can do Thursday 8 AM for $450. Book him?</p>
+        <div class="acts"><span class="pill filled">Hold to book</span><span class="pill quiet">Ask him something</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cap">
+    <h2>Hand it a whole project.</h2>
+    <p class="lead"><b>The gutter repair. The insurance claim. The birthday party.</b> Remy keeps a room for each one, works on it over days, and comes to you only when a decision is actually yours to make.</p>
+  </div>
+</div></section>
+
+<section class="privacy"><div class="wrap" style="max-width: 900px; text-align: center;">
+  <img src="/remy-mark.png" alt="" style="width: 44px; height: 44px; object-fit: contain; display: inline-block;">
+  <h2 style="margin-top: 26px;">Your life's data should never be kept and used to build AI.</h2>
+  <p class="plede">Remy reads your email and calendar to help you - and for nothing else. When it uses an AI model to think, your data is processed for that request and never retained: the AI providers Remy uses are bound to a Zero Data Retention standard. And what Remy remembers for you is only used to serve your needs and nothing else.</p>
+  <div class="pchecks">
+    <div class="pc"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2C8A63" stroke-width="1.6"/><path d="M6 10.5l2.8 2.8L14.5 7" stroke="#2C8A63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Zero data retention with AI providers</div>
+    <div class="pc"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2C8A63" stroke-width="1.6"/><path d="M6 10.5l2.8 2.8L14.5 7" stroke="#2C8A63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Never used to train AI</div>
+    <div class="pc"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#2C8A63" stroke-width="1.6"/><path d="M6 10.5l2.8 2.8L14.5 7" stroke="#2C8A63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Delete everything, any time</div>
+  </div>
+</div></section>
+
+<section class="faq"><div class="wrap" style="max-width: 860px;">
+  <h2 style="font-size: 42px; font-weight: 700; letter-spacing: -0.022em;">Questions, answered.</h2>
+  <div class="card" style="margin-top: 36px; padding: 8px 0;">
+    <div class="faqrow">
+      <div class="fq">What if Remy gets something wrong?</div>
+      <div class="fa">Nothing is sent, booked, or paid without your approval. You see the exact email or booking and press-and-hold to OK it. If a draft isn't right, edit it or just tell Remy in the chat.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">What's the "beta" part?</div>
+      <div class="fa">Remy runs through TestFlight, Apple's app for trying new apps early. Getting in takes two taps: install TestFlight, then Remy. Sign in with Google and you're talking - nothing to configure.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">What does it cost?</div>
+      <div class="fa">Free during the beta. We'll share pricing well before you'd ever be asked to pay.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">Is my data private?</div>
+      <div class="fa">Remy reads your email and calendar to help you, and for nothing else. Never sold, never used for ads, never used to train AI models - and you can see and delete everything it knows, any time.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">How is this different from ChatGPT or Siri?</div>
+      <div class="fa">ChatGPT can tell you about your dentist. Remy books the appointment. Siri reads one email. Remy triages your whole inbox. An assistant that does real work, not a chatbot that talks about it.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">Do I need to install anything weird?</div>
+      <div class="fa">Just the iPhone app. No CLI, no browser extension, no daemon running on your laptop.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">When can I try it?</div>
+      <div class="fa">We're onboarding in small batches to keep the experience tight. Join the waitlist and we'll reach out as we open the next cohort.</div>
+    </div>
+    <div class="faqrow">
+      <div class="fq">Who's behind this?</div>
+      <div class="fa">Built by Rohit Kapoor at Hoot Ventures. Questions: support@hootventures.ai.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="close">
+  <h2>Your life has enough admin. <span class="quiet">Hand it to Remy.</span></h2>
+  <a class="cta" href="mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0AiPhone%20model%3A%20">Get early access - free</a>
+  <div class="fine">iPhone · free during beta · sign in with Google, nothing to configure</div>
+</section>
+
+<footer><div class="wrap">
+  <div class="logo" style="font-size:15px"><img class="mark" src="/remy-mark.png" alt="" style="width:26px;height:26px;">Remy</div>
+  <div class="flinks"><a href="/privacy">Privacy</a><a href="/tos">Terms</a><a href="mailto:support@hootventures.ai">support@hootventures.ai</a></div>
+  <div class="byline">© 2026 Hoot Ventures · Remy is in active development</div>
+</div></footer>
+
+</body></html>
