@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const effectiveDate = 'April 23, 2026';
+const effectiveDate = 'August 13, 2026';
 ---
 
 <Layout
@@ -11,10 +11,8 @@ const effectiveDate = 'April 23, 2026';
   <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
     <nav class="flex items-center justify-between">
       <a href="/" class="flex items-center gap-2">
-        <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] font-semibold text-sm"
-          aria-hidden="true">R</span>
-        <span class="italic-serif text-xl tracking-tight">Remy</span>
+        <img src="/remy-mark.png" alt="" class="h-7 w-7" />
+        <span class="text-xl font-semibold tracking-tight">Remy</span>
       </a>
       <a href="/tos" class="text-sm text-[var(--ink-soft)] hover:text-[var(--ink)]">Terms of Service</a>
     </nav>
@@ -50,14 +48,14 @@ const effectiveDate = 'April 23, 2026';
       to you in the app.</p>
 
       <p><strong>(b) OAuth tokens.</strong> When you grant Remy permission to access your Google
-      account, Google issues us access and refresh tokens. We store these
-      tokens encrypted at rest using AES-256-GCM. They are the keys Remy uses to read your mail
-      and calendar when you ask it to. They are never shared with third parties and never
-      transmitted in plaintext.</p>
+      account (or a Microsoft account, where offered), the provider issues us access and refresh
+      tokens. We store these tokens encrypted at rest using AES-256-GCM. They are the keys Remy
+      uses to read your mail and calendar when you ask it to. They are never shared with third
+      parties and never transmitted in plaintext.</p>
 
       <p><strong>(c) Mail and calendar data.</strong> Depending on which permissions you grant,
       Remy reads email messages, calendar events, and associated metadata (participants, times,
-      subjects, bodies, and attachments when relevant) from your connected account. Remy uses this
+      subjects, bodies, and attachments when relevant) from your connected accounts. Remy uses this
       data to answer your questions, draft replies, and propose actions. Remy also maintains a
       bounded source index of relevant message and calendar metadata so it can find the right
       items without scanning your whole account on every request.</p>
@@ -110,21 +108,21 @@ const effectiveDate = 'April 23, 2026';
         <li>We do not allow humans to read your Google user data unless (i) we obtain your explicit consent for specific messages, (ii) it is necessary for security purposes such as investigating abuse, (iii) it is necessary to comply with applicable law, or (iv) the data is aggregated and used for internal operations in a way that cannot identify you.</li>
       </ul>
 
-      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">4. Future connected services</h2>
+      <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">4. Connected accounts</h2>
       <p>
-        Remy currently launches with Google account connection. If we add other account providers
-        later, we will update this policy before asking you to connect those accounts.
+        Remy connects to your Google account, and where offered in the app, to a Microsoft
+        account (Outlook mail and calendar). If we add other account providers later, we will
+        update this policy before asking you to connect those accounts.
       </p>
 
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">5. Third-party model providers</h2>
       <p>
         To generate replies, Remy sends the portion of your conversation and the relevant context
-        Remy needs to a large language model provider, currently Google's Gemini. The provider
-        processes that data on our behalf under contractual commitments
-        that prohibit them from using it to train their general-purpose models and require them
-        to delete it after a short retention period. We use reputable providers with SOC 2 Type
-        II controls and equivalent enterprise safeguards. A current list of subprocessors is
-        available on request at <a class="underline" href="mailto:privacy@hootventures.ai">privacy@hootventures.ai</a>.
+        Remy needs to third-party AI inference providers, currently Fireworks AI, DeepInfra, and
+        Groq. We only use providers under zero-data-retention terms for user data: they may not
+        use your data to train their models and may not retain it after your request completes.
+        A current list of subprocessors is available on request at
+        <a class="underline" href="mailto:privacy@hootventures.ai">privacy@hootventures.ai</a>.
       </p>
 
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">6. How we share information</h2>
@@ -142,7 +140,7 @@ const effectiveDate = 'April 23, 2026';
       </p>
       <ul class="list-disc pl-6 space-y-2">
         <li><strong>Encryption in transit:</strong> all traffic between your device and our servers uses TLS 1.2 or higher.</li>
-        <li><strong>Encryption at rest:</strong> databases and backups are encrypted. OAuth tokens are additionally encrypted at the application layer using AES-256-GCM with keys managed by a dedicated key management service.</li>
+        <li><strong>Encryption at rest:</strong> databases and backups are encrypted. OAuth tokens are additionally encrypted at the application layer using AES-256-GCM, with encryption keys stored separately from the database in our infrastructure provider's encrypted secrets store.</li>
         <li><strong>Row-level isolation:</strong> every table that holds user data uses Postgres row-level security, so the database itself refuses to return another account's rows — not just the application.</li>
         <li><strong>Approval gating:</strong> Remy never sends an email, books a meeting, or takes any outward-facing action without your explicit in-app approval for that specific action.</li>
         <li><strong>Access controls:</strong> production access is limited to a small number of engineers, scoped by role, logged, and subject to two-factor authentication. Humans do not read your mail, calendar, or conversations in the ordinary course of operating the Service.</li>
@@ -158,8 +156,9 @@ const effectiveDate = 'April 23, 2026';
       <p>
         We retain your data for as long as your account is active, or as needed to provide the
         Service and comply with our legal obligations. When you delete your account, we delete
-        the personal information we hold about you from our production systems within 30 days
-        and from backups within 90 days. Aggregated or de-identified information that cannot
+        the personal information we hold about you from our production systems within 30 days,
+        and backup copies expire as they age out of our backup provider's standard retention
+        cycle. Aggregated or de-identified information that cannot
         reasonably be used to identify you may be retained for longer.
       </p>
 

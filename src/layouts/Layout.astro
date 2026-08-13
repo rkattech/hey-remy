@@ -8,7 +8,7 @@ interface Props {
 }
 
 const {
-  title = 'Remy · Your own AI agent. Without the setup.',
+  title = 'Remy - The AI assistant for your life, not your job',
   description = 'Remy reads your email, checks your calendar, and gets things done for you. Open the app, sign in with Google, start talking.',
   ogImage = 'https://www.hey-remy.com/og.png',
 } = Astro.props;
@@ -21,19 +21,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.hey-rem
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#F4F0EA" />
+    <meta name="theme-color" content="#F1F4F8" />
     <meta name="color-scheme" content="light" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- Fonts: Instrument Serif (display) + Geist (body). Mixed serif/sans for warmth. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -52,18 +52,31 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.hey-rem
     <meta name="twitter:image" content={ogImage} />
 
     <style is:global>
+      /* Homepage design system (public/index.html is the source of truth).
+         Legacy token names from the old layout are aliased below so existing
+         page markup keeps working. */
       :root {
-        --bg: #f4f0ea;
-        --bg-raised: #fffbf5;
+        --bg: #f1f4f8;
+        --surface: #ffffff;
+        --surface-sunken: #e9ecf1;
+        --ink: #14161b;
+        --ink-2: #646b76;
+        --ink-3: #9aa1ac;
+        --hairline: #eceef2;
+        --divider: #e3e7ed;
+        --accent: #3056d3;
+        --tint: #ebeffc;
+        --tint-border: #dde4f8;
+
+        /* legacy aliases used by page markup */
+        --bg-raised: #ffffff;
         --bg-card: #ffffff;
-        --ink: #1a1713;
-        --ink-soft: #524a42;
-        --muted: #9a8f83;
-        --line: rgba(26, 23, 19, 0.1);
-        --line-strong: rgba(26, 23, 19, 0.16);
-        --accent: #8b4a2b;
-        --accent-soft: #e8d0b3;
-        --accent-ink: #3d2014;
+        --ink-soft: #646b76;
+        --muted: #9aa1ac;
+        --line: #e3e7ed;
+        --line-strong: #d5dae2;
+        --accent-soft: #ebeffc;
+        --accent-ink: #23283a;
       }
 
       *,
@@ -82,66 +95,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.hey-rem
       body {
         margin: 0;
         background-color: var(--bg);
-        background-image:
-          radial-gradient(ellipse 80% 50% at 20% 0%, rgba(232, 208, 179, 0.4), transparent 60%),
-          radial-gradient(ellipse 80% 50% at 100% 100%, rgba(232, 208, 179, 0.22), transparent 60%);
         color: var(--ink);
-        font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-        font-feature-settings: 'ss01', 'cv11';
+        font-family:
+          'Hanken Grotesk',
+          -apple-system,
+          BlinkMacSystemFont,
+          'SF Pro Text',
+          'Segoe UI',
+          sans-serif;
         min-height: 100vh;
-      }
-
-      /* Subtle grain overlay for depth */
-      body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.4;
-        mix-blend-mode: multiply;
-        background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23noise)'/></svg>");
-      }
-
-      body > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      .serif {
-        font-family: 'Instrument Serif', Georgia, serif;
-        font-weight: 400;
-        letter-spacing: -0.015em;
-      }
-
-      .italic-serif {
-        font-family: 'Instrument Serif', Georgia, serif;
-        font-style: italic;
-        font-weight: 400;
       }
 
       ::selection {
         background: var(--accent);
-        color: #fffbf5;
+        color: #ffffff;
       }
 
-      /* Smooth scroll-triggered fade for sections. Degrades gracefully in older browsers. */
-      @supports (animation-timeline: view()) {
-        .fade-in {
-          animation: fade-in linear both;
-          animation-timeline: view();
-          animation-range: entry 0% entry 40%;
-        }
-      }
-      @keyframes fade-in {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      a {
+        color: inherit;
       }
     </style>
   </head>

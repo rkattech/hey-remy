@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const effectiveDate = 'April 23, 2026';
+const effectiveDate = 'August 13, 2026';
 ---
 
 <Layout
@@ -11,10 +11,8 @@ const effectiveDate = 'April 23, 2026';
   <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
     <nav class="flex items-center justify-between">
       <a href="/" class="flex items-center gap-2">
-        <span
-          class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--bg)] font-semibold text-sm"
-          aria-hidden="true">R</span>
-        <span class="italic-serif text-xl tracking-tight">Remy</span>
+        <img src="/remy-mark.png" alt="" class="h-7 w-7" />
+        <span class="text-xl font-semibold tracking-tight">Remy</span>
       </a>
       <a href="/privacy" class="text-sm text-[var(--ink-soft)] hover:text-[var(--ink)]">Privacy Policy</a>
     </nav>
@@ -52,7 +50,7 @@ const effectiveDate = 'April 23, 2026';
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">2. The Service</h2>
       <p>
         Remy is an AI-powered personal assistant. With your permission, Remy connects to your
-        Google account to read mail, check your calendar, draft messages, propose
+        Google account (and optionally a Microsoft account, where offered) to read mail, check your calendar, draft messages, propose
         schedule changes, and maintain a compact working memory of the people, projects, and
         preferences that matter to you. Remy only takes outward-facing actions (sending email,
         booking meetings, etc.) when you explicitly approve the specific action in the app. You
@@ -65,7 +63,8 @@ const effectiveDate = 'April 23, 2026';
 
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">3. Your account</h2>
       <p>
-        You create a Remy account by signing in with Google. You are responsible
+        You create a Remy account by signing in with Google (or Microsoft, where
+        offered). You are responsible
         for the security of that upstream account and for any activity that happens through your
         Remy account. Notify us immediately at <a class="underline"
         href="mailto:security@hootventures.ai">security@hootventures.ai</a> if you suspect
@@ -116,7 +115,8 @@ const effectiveDate = 'April 23, 2026';
 
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">7. Third-party services</h2>
       <p>
-        The Service relies on third-party platforms including Google (Gmail, Google Calendar),
+        The Service relies on third-party platforms including Google (Gmail, Google Calendar)
+        and, where offered, Microsoft (Outlook mail and calendar),
         as well as third-party AI model providers.
         Your use of those platforms through Remy is also subject to their terms:
       </p>
