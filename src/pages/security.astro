@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = 'August 13, 2026';
+---
+
+<Layout
+  title="Security · Remy"
+  description="Only you can see your data. How Remy keeps that promise: encryption, database-level isolation, and approval-gated actions."
+>
+  <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/remy-mark.png" alt="" class="h-7 w-7" />
+        <span class="text-xl font-semibold tracking-tight">Remy</span>
+      </a>
+      <div class="flex items-center gap-5 text-sm text-[var(--ink-soft)]">
+        <a href="/subprocessors" class="hover:text-[var(--ink)]">Subprocessors</a>
+        <a href="/ai-model-providers" class="hover:text-[var(--ink)]">AI model providers</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+      Only you can see your data.
+    </h1>
+    <p class="mt-4 text-lg text-[var(--ink-soft)]">
+      Remy reads your mail and calendar to work for you. Here is how that access is protected,
+      what we will never do with it, and the controls you hold.
+    </p>
+    <p class="mt-2 text-sm text-[var(--muted)]">Last updated: {lastUpdated}</p>
+
+    <div class="mt-12 space-y-12">
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Three promises</h2>
+        <div class="mt-6 space-y-4">
+          <div class="rounded-2xl border border-[var(--divider)] bg-[var(--surface)] p-5">
+            <p class="font-semibold text-[var(--ink)]">We don&rsquo;t sell your data.</p>
+            <p class="mt-1 text-[var(--ink-soft)]">
+              Not to advertisers, not to data brokers, not to anyone. Your data has one job:
+              helping you.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-[var(--divider)] bg-[var(--surface)] p-5">
+            <p class="font-semibold text-[var(--ink)]">We don&rsquo;t train AI models on it.</p>
+            <p class="mt-1 text-[var(--ink-soft)]">
+              Your mail, calendar, and conversations never train anyone&rsquo;s models — not
+              ours, not our providers&rsquo;. Every AI provider we use is contractually barred
+              from it. See <a class="underline" href="/ai-model-providers">AI model providers</a>.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-[var(--divider)] bg-[var(--surface)] p-5">
+            <p class="font-semibold text-[var(--ink)]">Nothing sends without your approval.</p>
+            <p class="mt-1 text-[var(--ink-soft)]">
+              Remy never sends an email, books an event, places a call, or takes any
+              outward-facing action without your explicit tap on that specific action.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">
+          What Remy accesses, and why
+        </h2>
+        <div class="mt-6 divide-y divide-[var(--divider)] rounded-2xl border border-[var(--divider)] bg-[var(--surface)]">
+          <div class="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
+            <div class="w-28 shrink-0 font-semibold text-[var(--ink)]">Email</div>
+            <div class="text-[var(--ink-soft)]">
+              Finds what matters, catches you up, drafts replies you approve. Remy indexes
+              message metadata so it can find things fast instead of re-reading your whole inbox.
+            </div>
+          </div>
+          <div class="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
+            <div class="w-28 shrink-0 font-semibold text-[var(--ink)]">Calendar</div>
+            <div class="text-[var(--ink-soft)]">
+              Answers schedule questions, spots conflicts, and books events — writes only after
+              you approve.
+            </div>
+          </div>
+          <div class="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
+            <div class="w-28 shrink-0 font-semibold text-[var(--ink)]">Memory</div>
+            <div class="text-[var(--ink-soft)]">
+              A compact working memory of the people, projects, and preferences that matter to
+              you — scoped to your account, visible only to you, deletable any time.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">
+          How it&rsquo;s protected
+        </h2>
+        <ul class="mt-6 space-y-3 text-[var(--ink-soft)]">
+          <li>
+            <strong class="text-[var(--ink)]">Encrypted everywhere.</strong> TLS 1.2+ in
+            transit; encrypted databases and backups at rest. Your account tokens get a second
+            layer of AES-256-GCM encryption with keys kept outside the database.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Isolation enforced by the database itself.</strong>
+            Every table with user data uses Postgres row-level security: the database refuses to
+            return another account&rsquo;s rows, even if the application asked.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">US-hosted infrastructure.</strong> Served from
+            Fly.io and Supabase in the United States.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Humans don&rsquo;t read your data.</strong>
+            Production access is limited, logged, and two-factor protected. Nobody reads your
+            mail, calendar, or conversations in the ordinary course of running the Service.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Independent security assessment.</strong> Remy is
+            completing Google&rsquo;s OAuth verification for Gmail access, which includes an
+            independent CASA security assessment based on the OWASP ASVS standard.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Google API Limited Use.</strong> Google user data
+            is used only to provide features you see in the app — never for ads, never sold,
+            never for training.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Your controls</h2>
+        <ul class="mt-6 space-y-3 text-[var(--ink-soft)]">
+          <li>
+            <strong class="text-[var(--ink)]">Approve every action.</strong> Outward-facing
+            actions show you exactly what will happen — recipient, content, time — before you
+            tap approve.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Revoke access instantly.</strong> From the app, or
+            directly at your
+            <a class="underline" target="_blank" rel="noopener" href="https://myaccount.google.com/permissions">Google</a>
+            or
+            <a class="underline" target="_blank" rel="noopener" href="https://account.live.com/consent/Manage">Microsoft</a>
+            account — Remy&rsquo;s access dies with the grant.
+          </li>
+          <li>
+            <strong class="text-[var(--ink)]">Delete everything.</strong> Delete your account in
+            the app and your data is removed from production systems within 30 days.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-3 text-[var(--ink-soft)]">
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">The full picture</h2>
+        <p>
+          Every vendor that touches your data: <a class="underline" href="/subprocessors">subprocessors</a>.
+          Every AI provider and its retention terms: <a class="underline" href="/ai-model-providers">AI model providers</a>.
+          The legal detail: <a class="underline" href="/privacy">Privacy Policy</a>.
+        </p>
+        <p>
+          Found a vulnerability? Email
+          <a class="underline" href="mailto:security@hootventures.ai">security@hootventures.ai</a>
+          and we will respond promptly.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-[var(--line)] mt-12">
+    <div class="mx-auto max-w-3xl px-6 py-8 flex items-center justify-between text-sm text-[var(--muted)]">
+      <a class="hover:text-[var(--ink)]" href="/">&larr; Back to home</a>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-[var(--ink)]" href="/privacy">Privacy</a>
+        <a class="hover:text-[var(--ink)]" href="/tos">Terms</a>
+        <a class="hover:text-[var(--ink)]" href="mailto:support@hootventures.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</Layout>

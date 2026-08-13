@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const lastUpdated = 'August 13, 2026';
+
+const likely = [
+  {
+    name: 'Fly.io',
+    purpose: 'Hosts the Remy gateway — the server that runs your assistant. United States.',
+  },
+  {
+    name: 'Supabase',
+    purpose:
+      'Postgres database holding your account, conversations, working memory, and source index. Encrypted at rest, row-level security. United States.',
+  },
+  {
+    name: 'Upstash',
+    purpose: 'Redis queue that schedules Remy’s background work (indexing, briefings, reminders).',
+  },
+  {
+    name: 'Fireworks AI',
+    purpose:
+      'AI inference for chat and background understanding. Zero-data-retention terms; no training on your data.',
+  },
+  {
+    name: 'Cloudflare',
+    purpose: 'Website hosting, DNS, and email routing for our domains.',
+  },
+  {
+    name: 'Expo',
+    purpose: 'Delivers push notifications to the app.',
+  },
+  {
+    name: 'Apple',
+    purpose: 'Push notification delivery through the Apple Push Notification service.',
+  },
+  {
+    name: 'Langfuse',
+    purpose:
+      'Tracing of AI requests, used to debug and improve the assistant during early access. Scope narrows before general availability.',
+  },
+];
+
+const conditional = [
+  {
+    name: 'DeepInfra',
+    purpose: 'Backup AI inference running the same models. Used only if Fireworks is unavailable.',
+  },
+  {
+    name: 'Groq',
+    purpose: 'Speech-to-text for the dictation mic button. Zero-data-retention account.',
+  },
+  {
+    name: 'LiveKit',
+    purpose: 'Real-time voice sessions, including speech-to-text, when you talk to Remy by voice.',
+  },
+  {
+    name: 'Cartesia',
+    purpose: 'Turns Remy’s replies into speech in voice mode.',
+  },
+  {
+    name: 'Retell AI',
+    purpose:
+      'Orchestrates phone calls Remy places on your behalf, including the in-call AI model and voice.',
+  },
+  {
+    name: 'Twilio',
+    purpose: 'Provides the phone number and telephony for calls Remy places.',
+  },
+  {
+    name: 'Browserbase',
+    purpose: 'Isolated cloud browser sessions when Remy does an errand on a website for you.',
+  },
+  {
+    name: 'GNews',
+    purpose: 'News headlines for your daily brief. Receives topic queries, never personal data.',
+  },
+];
+---
+
+<Layout
+  title="Subprocessors · Remy"
+  description="Every vendor that processes data on Remy's behalf, and what each one does."
+>
+  <header class="mx-auto max-w-3xl px-6 pt-8 sm:pt-12">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/remy-mark.png" alt="" class="h-7 w-7" />
+        <span class="text-xl font-semibold tracking-tight">Remy</span>
+      </a>
+      <div class="flex items-center gap-5 text-sm text-[var(--ink-soft)]">
+        <a href="/security" class="hover:text-[var(--ink)]">Security</a>
+        <a href="/ai-model-providers" class="hover:text-[var(--ink)]">AI model providers</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Subprocessors</h1>
+    <p class="mt-4 text-lg text-[var(--ink-soft)]">
+      Every vendor that processes data on Remy&rsquo;s behalf, and what each one does.
+    </p>
+    <p class="mt-2 text-sm text-[var(--muted)]">Last updated: {lastUpdated}</p>
+
+    <div class="mt-12 space-y-12">
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">
+          Core subprocessors
+        </h2>
+        <p class="mt-2 text-[var(--ink-soft)]">
+          These vendors support the normal Remy product and are likely to process data during
+          standard use.
+        </p>
+        <div class="mt-6 divide-y divide-[var(--divider)] rounded-2xl border border-[var(--divider)] bg-[var(--surface)]">
+          {
+            likely.map((v) => (
+              <div class="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
+                <div class="w-40 shrink-0 font-semibold text-[var(--ink)]">{v.name}</div>
+                <div class="text-[var(--ink-soft)]">{v.purpose}</div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">
+          Feature-specific subprocessors
+        </h2>
+        <p class="mt-2 text-[var(--ink-soft)]">
+          These vendors are used only when you use a specific capability — voice, dictation,
+          phone calls, web errands, or the daily news brief.
+        </p>
+        <div class="mt-6 divide-y divide-[var(--divider)] rounded-2xl border border-[var(--divider)] bg-[var(--surface)]">
+          {
+            conditional.map((v) => (
+              <div class="flex flex-col gap-1 p-5 sm:flex-row sm:gap-6">
+                <div class="w-40 shrink-0 font-semibold text-[var(--ink)]">{v.name}</div>
+                <div class="text-[var(--ink-soft)]">{v.purpose}</div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="space-y-3 text-[var(--ink-soft)]">
+        <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">Notes</h2>
+        <p>
+          Your connected accounts — Google, and Microsoft where offered — are not subprocessors.
+          They are services you already use that you choose to connect; how Remy treats data from
+          them is covered in our <a class="underline" href="/privacy">Privacy Policy</a>.
+        </p>
+        <p>
+          AI model providers are described in more detail, including their data-retention
+          commitments, on the
+          <a class="underline" href="/ai-model-providers">AI model providers</a> page.
+        </p>
+        <p>
+          We update this page as our infrastructure evolves. Questions about any vendor:
+          <a class="underline" href="mailto:privacy@hootventures.ai">privacy@hootventures.ai</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="border-t border-[var(--line)] mt-12">
+    <div class="mx-auto max-w-3xl px-6 py-8 flex items-center justify-between text-sm text-[var(--muted)]">
+      <a class="hover:text-[var(--ink)]" href="/">&larr; Back to home</a>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-[var(--ink)]" href="/privacy">Privacy</a>
+        <a class="hover:text-[var(--ink)]" href="/tos">Terms</a>
+        <a class="hover:text-[var(--ink)]" href="mailto:support@hootventures.ai">Contact</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
