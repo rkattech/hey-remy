@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const waitlist =
+  'mailto:support@hootventures.ai?subject=Remy%20waitlist&body=Hi%2C%20I%27d%20like%20early%20access%20to%20Remy.%0A%0AName%3A%20%0AiPhone%20model%3A%20';
+---
+
+<Layout
+  title="Why I built Remy · Remy"
+  description="A note from the founder: the conflict of interest at the heart of personal AI, and the five things Remy was built to get right."
+>
+  <header class="mx-auto max-w-2xl px-6 pt-8 sm:pt-12">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/remy-mark.png" alt="" class="h-7 w-7" />
+        <span class="text-xl font-semibold tracking-tight">Remy</span>
+      </a>
+      <a
+        href={waitlist}
+        class="inline-flex h-10 items-center rounded-full bg-[var(--ink)] px-5 text-sm font-semibold text-white"
+        >Get early access</a
+      >
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-2xl px-6 py-16 sm:py-20">
+    <p class="text-xs font-bold uppercase tracking-[0.06em] text-[var(--muted)]">
+      A note from the founder
+    </p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Why I built Remy</h1>
+
+    <div class="letter mt-9">
+      <p>
+        I loved ChatGPT from the first week. I used it constantly. But when it came to the
+        personal stuff - my kid&rsquo;s school, a health question, plans with my wife - I never
+        quite felt comfortable sharing all that.
+      </p>
+
+      <p>
+        That feeling never went away, and eventually I understood why. Something about companies
+        that are in the business of building AI models also having all my personal data did not
+        make me feel safe - whether I checked the &ldquo;don&rsquo;t use my data to train
+        AI&rdquo; box or not. <b
+          >To me, there is a conflict of interest between my needs and their ambitions.</b
+        >
+      </p>
+
+      <p>So I went looking for an alternative.</p>
+
+      <p>
+        There are some, but they are built for very technical people: install this, configure
+        that, run your own server. I could never get my wife or my teenager to use a tool like
+        that. It was clear to me that what I wanted did not exist yet.
+      </p>
+
+      <p>That is when I started working on Remy.</p>
+
+      <p>The things I cared about were simple:</p>
+
+      <p><b>I want my data used for one purpose and one purpose alone: for me.</b></p>
+
+      <p>
+        <b>I want it to be so simple that my whole family can use it</b> - my wife, my teenager,
+        and even my almost 80 year old mom.
+      </p>
+
+      <p>
+        <b>I want it to reach out to me when something needs my attention,</b> like a real
+        assistant would. Not the other way around.
+      </p>
+
+      <p>
+        <b>I want it to be an extension of my brain,</b> so I don&rsquo;t have to remember
+        everything about everything all the time.
+      </p>
+
+      <p>
+        <b>And I want it to be able to do things in the real world</b> - but only with my
+        approval, never by itself.
+      </p>
+
+      <p>
+        This thinking shaped how Remy feels. ChatGPT and the others have trained us to start a
+        new chat for every new topic. But that is not how you work with a real assistant. With
+        Remy, it is just one chat: you talk to it like you would talk to a person. You can still
+        make a room for a special project, or a place to keep your recipes. But you never have
+        to think about where a thought goes. You just tell Remy.
+      </p>
+
+      <p>What makes Remy different is in our promises:</p>
+
+      <p>
+        <b>We only make money one way: people paying for Remy.</b> No ads. No selling data to
+        third parties. If we break your trust, we lose your business.
+      </p>
+
+      <p>
+        <b>We are not in the business of building AI models.</b> When Remy uses an AI model to
+        think, that request is processed and never kept. Every AI provider Remy uses is held to
+        a zero data retention standard.
+      </p>
+
+      <p>
+        <b>Nothing real happens without your approval.</b> Remy cannot send an email, make a
+        call, or book anything on its own. You press and hold to approve, or it does not happen.
+      </p>
+
+      <p>
+        <b>You can delete everything, any time.</b> If you decide to delete Remy, delete it all
+        right in the app. We plan to add a way to download your data too. We want you to stay
+        because Remy is great, not because your data is stuck with us.
+      </p>
+
+      <p>
+        This is the future I want for personal AI - an extension of us, for us, and us alone. We
+        use Remy every day. Even my wife loves it. I hope you give it a try and tell us how to
+        make it better for you.
+      </p>
+    </div>
+
+    <div class="mt-10 border-t border-[var(--divider)] pt-7">
+      <p class="text-lg font-bold">Rohit</p>
+      <p class="mt-0.5 text-sm text-[var(--muted)]">Founder, Remy</p>
+    </div>
+
+    <div class="mt-14 text-center">
+      <a
+        href={waitlist}
+        class="inline-flex h-[52px] items-center gap-2 rounded-full bg-[var(--ink)] px-8 text-[17px] font-semibold text-white"
+        >Get early access - free</a
+      >
+      <p class="mt-4 text-[13.5px] text-[var(--muted)]">
+        iPhone &middot; free during beta &middot; sign in with Google, nothing to configure
+      </p>
+    </div>
+  </main>
+
+  <footer class="mt-12 border-t border-[var(--line)]">
+    <div
+      class="mx-auto flex max-w-2xl items-center justify-between px-6 py-8 text-sm text-[var(--muted)]"
+    >
+      <a class="hover:text-[var(--ink)]" href="/">&larr; Back to home</a>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-[var(--ink)]" href="/security">Security</a>
+        <a class="hover:text-[var(--ink)]" href="/privacy">Privacy</a>
+        <a class="hover:text-[var(--ink)]" href="/tos">Terms</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  .letter p {
+    margin-top: 22px;
+    font-size: 17.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .letter p:first-child {
+    margin-top: 0;
+  }
+  .letter p b {
+    color: var(--ink);
+    font-weight: 700;
+  }
+</style>

@@ -112,8 +112,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.hey-rem
         color: #ffffff;
       }
 
-      a {
-        color: inherit;
+      /* Layered so Tailwind text-* utilities can override anchor color */
+      @layer base {
+        a {
+          color: inherit;
+        }
       }
     </style>
   </head>
