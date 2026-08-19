@@ -12,7 +12,7 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 - [LIVE 2026-08-19] remy-vs-ohai
 - [LIVE 2026-08-19] remy-vs-motion (covers Reclaim)
 - [LIVE 2026-08-19] remy-vs-gemini
-- [DRAFTED] remy-vs-chatgpt (connectors: reads on ask, sends with approval, may train on
+- [LIVE 2026-08-19] remy-vs-chatgpt (connectors: reads on ask, sends with approval, may train on
       Free/Plus/Go/Pro unless setting off - verified quote in research)
 - [ ] remy-vs-skylight
 - [ ] remy-vs-cozi
@@ -25,7 +25,7 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 - [LIVE 2026-08-19] best-ai-for-school-emails
 - [LIVE 2026-08-19] ai-assistant-that-makes-phone-calls
 - [LIVE 2026-08-19] overwhelmed-life-admin-ai
-- [DRAFTED] ai-that-reads-my-email-and-tells-me-what-matters
+- [LIVE 2026-08-19] ai-that-reads-my-email-and-tells-me-what-matters
 - [ ] ai-assistant-for-adhd-life-admin
 - [ ] ai-assistant-for-busy-parents (life, not calendar)
 - [ ] ai-that-reminds-you-about-renewals-passport-car-registration
@@ -39,7 +39,7 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 
 ## Alternatives
 - [ ] ohai-alternatives
-- [DRAFTED] maple-alternatives (Maple sunsets 2026-12-31; people are searching NOW)
+- [LIVE 2026-08-19] maple-alternatives (Maple sunsets 2026-12-31; people are searching NOW)
 - [ ] motion-alternatives-for-personal-life
 - [ ] cozi-alternatives-with-ai
 
