@@ -43,7 +43,7 @@ And Spark requires Keep Activity to be on. Data from connected apps like Gmail i
 
 For work, a Workspace business plan changes those terms. For your personal Gmail, that's the deal. I loved Gemini and ChatGPT from the first week, and this is exactly the reason I never felt comfortable putting my kid's school, a health question, or plans with my wife into them. A company whose business is building models, holding my family's life, is a conflict of interest, whichever box I tick. The long version is in [Why I built Remy](/why).
 
-Remy's side of it: your data is used to help you and for nothing else. When Remy uses an AI model, the request is processed and not kept; the providers are bound to zero-data-retention terms and listed, with their policies, at [/ai-model-providers](/ai-model-providers). No human at Remy reads your email to improve a model. You can delete everything from inside the app.
+Remy's side of it: your data is used to help you and for nothing else. When Remy uses an AI model, the request is processed and not kept; the providers are bound to zero-data-retention terms and listed, with their policies, at [/ai-model-providers](/ai-model-providers). You can delete everything from inside the app.
 
 ## Approval: undo after vs approve before
 

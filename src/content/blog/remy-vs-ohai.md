@@ -50,7 +50,7 @@ If you don't want an assistant taking actions - you just want the schedule in on
 
 Ohai's privacy policy (effective December 1, 2025) says it collects and records your interactions *"including training our algorithms to allow us to execute on your requests more efficiently,"* that *"Human Assistants may review a subset of emails to ensure correctness and improve model performance,"* and that calendar and contact data is shared with OpenAI.
 
-I built Remy because I didn't want my family's life to be training material. Remy doesn't train models on your data. When it uses an AI model to think, the request is processed and not kept; every provider is held to zero-data-retention terms, and the list is public at [/ai-model-providers](/ai-model-providers). Nobody at Remy reads your email to "improve the model." You can read the longer version in [Why I built Remy](/why).
+I built Remy because I didn't want my family's life to be training material. Remy doesn't train models on your data. When it uses an AI model to think, the request is processed and not kept; every provider is held to zero-data-retention terms, and the list is public at [/ai-model-providers](/ai-model-providers). You can read the longer version in [Why I built Remy](/why).
 
 ## Pick Ohai if
 

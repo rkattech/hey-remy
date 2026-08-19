@@ -52,10 +52,10 @@ The calls you keep putting off: the salon, the dentist reschedule, the pediatric
 ## What it's not for, and the honest limits
 
 - **Not for calling people in your life.** Remy calls businesses to get something done. It's not for calling your mom.
-- **Not for anything that needs your identity verified on the phone** (banks, insurers asking for your SSN). Remy will tell you it can't and hand it back to you.
+- **Not for anything that needs your identity verified on the phone** (banks, insurers asking for your SSN). Keep those calls yourself.
 - **Not for emergencies.** Obviously.
-- **It can be told no.** Some offices won't book with an assistant. Remy tells you that too, so you can call yourself.
-- **iPhone only, beta, US phone numbers today.**
+- **It can be told no.** Some offices won't book with an assistant. Remy reports back what they said, so you can call yourself.
+- **iPhone only, beta.**
 
 ## What to compare it against
 
