@@ -126,12 +126,15 @@ const wordHit = (text, needle) =>
     text,
   );
 
-function score(text, sources) {
-  const hay = `${text}\n${sources.join('\n')}`;
+function score(text, sources, prompt = '') {
+  const hay = `${text}\n${sources.join('\n')}`.toLowerCase();
+  const asked = prompt.toLowerCase();
   const remyNamed = wordHit(text, 'Remy');
-  const remyOurs = remyNamed && brands.remy.some((n) => hay.toLowerCase().includes(n.toLowerCase()));
+  // A signal only counts if the prompt itself didn't hand it to the model.
+  const signals = brands.remy.filter((n) => !asked.includes(n.toLowerCase()));
+  const remyOurs = remyNamed && signals.some((n) => hay.includes(n.toLowerCase()));
   const remyOther =
-    remyNamed && !remyOurs && /kitchen|chef|recipe|cook|martin|ratatouille/i.test(text);
+    remyNamed && !remyOurs && /kitchen|chef|recipe|cook|martin|ratatouille|hockey labs|memory partner/i.test(text);
   const mentioned = Object.entries(brands.competitors)
     .filter(([, needles]) => needles.some((n) => wordHit(text, n)))
     .map(([name]) => name);
@@ -143,8 +146,8 @@ const wanted = (args.engines ? args.engines.split(',') : Object.keys(ENGINES)).f
   (e) => ENGINES[e],
 );
 const only = args.only ? new Set(args.only.split(',')) : null;
-const active = wanted.filter((e) => ENGINES[e].key);
-const skipped = wanted.filter((e) => !ENGINES[e].key);
+const active = args.rescore ? [] : wanted.filter((e) => ENGINES[e].key);
+const skipped = args.rescore ? [] : wanted.filter((e) => !ENGINES[e].key);
 
 const results = [];
 const jobs = [];
@@ -160,7 +163,7 @@ async function worker() {
     const row = { date, engine, model: ENGINES[engine].model, id: p.id, door: p.door, prompt: p.prompt };
     try {
       const { text, sources } = await ENGINES[engine].ask(p.prompt);
-      Object.assign(row, { text, sources, ...score(text, sources), error: null });
+      Object.assign(row, { text, sources, ...score(text, sources, p.prompt), error: null });
     } catch (err) {
       Object.assign(row, { text: '', sources: [], error: String(err.message ?? err) });
     }
@@ -170,7 +173,13 @@ async function worker() {
     );
   }
 }
-await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+if (args.rescore) {
+  for (const r of JSON.parse(readFileSync(join(outDir, 'results.json'), 'utf8'))) {
+    results.push({ ...r, ...(r.error ? {} : score(r.text, r.sources, r.prompt)) });
+  }
+} else {
+  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+}
 results.sort((a, b) => prompts.findIndex((p) => p.id === a.id) - prompts.findIndex((p) => p.id === b.id));
 
 writeFileSync(join(outDir, 'results.json'), JSON.stringify(results, null, 2));
@@ -201,7 +210,7 @@ const sovRows = Object.entries(sov).sort((a, b) => b[1] - a[1]);
 const lines = [
   `# AI visibility panel - ${date}`,
   '',
-  `Prompts: ${only ? only.size : prompts.length}. Engines run: ${active.join(', ') || 'none'}.` +
+  `Prompts: ${only ? only.size : prompts.length}. Engines run: ${(args.rescore ? [...new Set(results.map((r) => r.engine))] : active).join(', ') || 'none'}.` +
     (skipped.length ? ` Skipped (no key): ${skipped.join(', ')}.` : ''),
   '',
   'Caveat: these are API answers with web search switched on. They are a repeatable proxy for',

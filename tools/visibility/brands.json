@@ -1,5 +1,5 @@
 {
-  "remy": ["hey-remy", "hey remy", "heyremy", "Remy (hey", "Remy, the AI assistant for your life", "Remy - the AI assistant for your life"],
+  "remy": ["hey-remy.com", "hey-remy", "hey remy", "heyremy", "for your life, not your job", "Hoot Ventures"],
   "competitors": {
     "Ohai": ["ohai"],
     "Maple": ["maple"],
@@ -11,6 +11,9 @@
     "ChatGPT": ["chatgpt"],
     "Todoist": ["todoist"],
     "Lindy": ["lindy"],
+    "Genspark": ["genspark"],
+    "RenewalKit": ["renewalkit"],
+    "FillApp": ["fillapp"],
     "Sense": ["sense"],
     "Jam": ["jam"],
     "Akiflow": ["akiflow"],

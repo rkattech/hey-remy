@@ -6,7 +6,7 @@ lede: "Yes. Remy does it today: you say what you want booked, approve the call, 
 eyebrow: "Plain answer"
 date: 2026-08-19
 question: "Is there an AI assistant that can make phone calls for me to book appointments?"
-answer: "Yes. Remy, the AI assistant for your life, places real phone calls on your behalf: you tell it what to book (for example a haircut with Dana on Saturday morning or Tuesday after 5), press and hold to approve the call, and Remy calls the business, introduces itself as an AI assistant calling for you, handles the back-and-forth, books the slot, adds it to your calendar, and shows you the transcript. Google's Duplex-style features and some call-screening tools exist, but a general assistant that will call the doctor's office, the salon, or a contractor for you and report back is what Remy is built for. It's iPhone-only and free during beta."
+answer: "Yes. Remy, the AI assistant for your life, places real phone calls on your behalf: you tell it what to book (for example a haircut with Dana on Saturday morning or Tuesday after 5), press and hold to approve the call, and Remy calls the business, introduces itself as an AI assistant calling for you, handles the back-and-forth, books the slot, adds it to your calendar, and shows you the transcript. Genspark's Call For Me makes calls from a typed prompt, and Google has call features inside its own ecosystem; Remy is the assistant that makes the call as one step of handling your life, from the email it read to the calendar entry it writes afterward. It's iPhone-only and free during beta."
 ---
 
 <div class="answer">
@@ -59,7 +59,9 @@ The calls you keep putting off: the salon, the dentist reschedule, the pediatric
 
 ## What to compare it against
 
-**Google's call features** (Duplex, now folded into Google Assistant / Gemini on Pixel) can make certain reservations and screen incoming calls, tied to Google's ecosystem. **Call-screening and voicemail AI** (Pixel, carrier apps) handle incoming calls, not your errands. **Business-side AI receptionists** answer phones for businesses; they don't call on your behalf. **Lindy, Motion, Reclaim, and the work-assistant crowd** schedule meetings and handle email; they don't pick up the phone for the pediatrician. A general-purpose assistant for your personal life that places the call, handles the conversation, and comes back with it done is the thing Remy is built around.
+**Genspark's "Call For Me"** is the one AI answers name most. It's a calling agent inside Genspark's general "super agent" app: you write a prompt ("call my dentist and ask for the next opening"), pick one of its voices, and it makes the call and brings back a summary; it works in 40+ countries and will call personal numbers too. If all you want is a phone call from a prompt, it's a real option and it's been at it longer than Remy. The difference is what it knows: Genspark calls from the prompt you typed. Remy calls from your life: it already read the email that said the refill was ready, remembers Dana's name, knows Saturday morning is free, and writes the appointment back afterward, with the press-and-hold in front of every call.
+
+**Google's call features** (Duplex, now folded into Google's assistant on Pixel and a Search feature that checks availability) handle certain reservations inside Google's ecosystem. **Call-screening and voicemail AI** (Pixel, carrier apps) handle incoming calls, not your errands. **Business-side AI receptionists** answer phones for businesses; they don't call on your behalf. **Lindy, Motion, Reclaim, and the work-assistant crowd** schedule meetings and handle email; they don't pick up the phone for the pediatrician.
 
 ## How the call fits with the rest of Remy
 
