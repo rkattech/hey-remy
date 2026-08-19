@@ -1,0 +1,91 @@
+---
+import Article from '../layouts/Article.astro';
+
+const faqs: { q: string; a: string; html?: string }[] = [
+  {
+    q: 'What is Remy?',
+    a: "Remy is an AI assistant for your personal life, not your job. It's an iPhone app that reads your Gmail and Google Calendar with your permission, catches what you'd miss in long emails, gives you heads-ups before deadlines slip, makes phone calls for you, fills in forms, and remembers the people and dates that matter. Every outward action is shown to you first and happens only after you press and hold to approve.",
+  },
+  {
+    q: 'Is Remy free?',
+    a: 'Yes, during the beta. Remy is free on iPhone while it is in early access. Paid plans will come later; Remy makes money one way only, people paying for it, never ads or selling data.',
+  },
+  {
+    q: 'Does Remy read all my email?',
+    a: "Remy reads your Gmail on your behalf so it can catch what matters and act on it; that's the point of it. It reads to help you and for nothing else. Email content and access tokens are encrypted at rest, the AI providers Remy uses are bound to zero-data-retention terms, and you can delete everything from inside the app.",
+  },
+  {
+    q: 'Can Remy send emails or make calls on its own?',
+    a: 'No. Every email, booking, form, and phone call is shown to you first. You press and hold to approve, or it does not happen. Remy cannot send, book, or call by itself.',
+  },
+  {
+    q: 'Is my data used to train AI models?',
+    a: "No. Remy is not in the business of building AI models. When Remy uses an AI model to think, the request is processed and not kept; the providers it uses are held to a zero-data-retention standard, and the list with each provider's policy is public at hey-remy.com/ai-model-providers.",
+  },
+  {
+    q: "Is Remy a family calendar app, like Cozi or Skylight?",
+    a: "No. Those are shared calendars the whole household looks at. Remy is one person's assistant: it reads your email, notices the deadline in the school newsletter, and handles it, rather than giving you another calendar to keep up to date. Many parents use it exactly for the school-email problem.",
+  },
+  {
+    q: 'Is Remy for work?',
+    a: "No. Remy is for your life: school emails, appointments, renewals, the salon call, the gutter repair, Mom's refills. It does not do meeting notes, tickets, CRM, or auto-scheduling your workday. If that's what you need, look at Motion, Reclaim, or a note-taker.",
+  },
+  {
+    q: 'How is Remy different from ChatGPT or Gemini?',
+    a: "ChatGPT and Gemini answer when you ask. Remy is already on your inbox and calendar, comes to you with the one line that matters, and then does the thing with your approval, including picking up the phone. And Remy's business is not building AI models on your data.",
+  },
+  {
+    q: 'What do I need to set it up?',
+    a: 'An iPhone and a Google account. Install Remy, sign in with Google, say hi. There is nothing to configure, no commands to learn, and no rules to write.',
+  },
+  {
+    q: 'Is Remy on Android?',
+    a: 'Not yet. Remy is iPhone-only during the beta.',
+  },
+  {
+    q: 'Does Remy work with Outlook or Apple Mail?',
+    a: 'Not today. Remy signs in with Google and works with Gmail and Google Calendar.',
+  },
+  {
+    q: 'Can I delete my data?',
+    a: 'Yes, from inside the app, any time. Delete Remy and everything it holds about you goes with it.',
+  },
+  {
+    q: 'Who makes Remy?',
+    a: 'Remy is built by Hoot Ventures, founded by Rohit Kapoor. He wrote about why at hey-remy.com/why.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Article
+  title="Remy FAQ - price, privacy, what it reads, what it can't do"
+  description="Straight answers about Remy, the AI assistant for your life: is it free, does it read all my email, can it act on its own, is my data used to train AI, is it for families, is it for work, Android, Outlook, deleting data."
+  eyebrow="FAQ"
+  heading="Questions people ask about Remy"
+  lede="Short answers. Where the honest answer is 'no' or 'not yet', it says so."
+  jsonLd={jsonLd}
+>
+  {
+    faqs.map((f) => (
+      <section>
+        <h2>{f.q}</h2>
+        <p>{f.a}</p>
+      </section>
+    ))
+  }
+  <hr />
+  <p class="note">
+    Something missing? Email <a href="mailto:support@hootventures.ai">support@hootventures.ai</a>
+    and we'll answer it here.
+  </p>
+</Article>

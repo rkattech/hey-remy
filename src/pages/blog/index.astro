@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+
+<Layout
+  title="Remy blog - straight answers about AI assistants for your life"
+  description="Comparisons, explainers, and notes from building Remy, the AI assistant for your life, not your job. Which AI assistant reads your email, makes calls, and handles life admin - answered plainly."
+>
+  <SiteNav />
+  <main class="mx-auto max-w-2xl px-6 py-16 sm:py-20">
+    <p class="text-xs font-bold uppercase tracking-[0.06em] text-[var(--muted)]">Blog</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Straight answers</h1>
+    <p class="mt-5 text-[19px] leading-relaxed text-[var(--ink-2)]">
+      Which AI assistant actually reads your email, makes the call, and handles the life admin -
+      compared plainly, including where Remy is not the right pick. Notes from the founder.
+    </p>
+
+    <ul class="mt-12 divide-y divide-[var(--divider)]">
+      {
+        posts.map((p) => (
+          <li class="py-6">
+            <a href={`/blog/${p.id}/`} class="group block">
+              <p class="text-[13px] text-[var(--muted)]">{fmt(p.data.date)}</p>
+              <h2 class="mt-1 text-[22px] font-bold leading-snug tracking-tight group-hover:text-[var(--accent)]">
+                {p.data.title}
+              </h2>
+              <p class="mt-2 text-[16px] leading-relaxed text-[var(--ink-2)]">{p.data.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-10 text-sm text-[var(--muted)]">
+      <a class="underline underline-offset-4 hover:text-[var(--ink)]" href="/rss.xml">RSS</a>
+    </p>
+  </main>
+  <SiteFooter />
+</Layout>

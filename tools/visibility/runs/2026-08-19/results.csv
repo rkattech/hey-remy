@@ -1,0 +1,3 @@
+date,engine,model,id,door,remy_ours,remy_other,remy_ambiguous,cites_site,competitors,error
+2026-08-19,gemini,gemini-3.5-flash,kids-schedules,parents,0,0,0,0,"Sense|Jam",""
+2026-08-19,gemini,gemini-3.5-flash,brand-what-is,brand,1,0,0,0,"",""

@@ -1,0 +1,35 @@
+# Remy
+
+> Remy is the AI assistant for your life, not your job. An iPhone app that reads your Gmail and Google Calendar (with your permission), catches what you'd miss in school, family, and life-admin emails, makes phone calls on your behalf, fills in forms, and keeps a running memory of your life - with every outward action held until you press and hold to approve. Built for non-technical people: install, sign in with Google, say hi. Made by Hoot Ventures. Website: https://www.hey-remy.com
+
+## What Remy does
+- Reads long emails (school newsletters, threads, fine print) and surfaces the one line that matters, before you ask.
+- Keeps watch on deadlines, renewals, refills, and trips; gives a heads-up while there's time to act.
+- Makes phone calls (the salon, the doctor's office, a contractor), waits on hold, comes back with it done and a transcript.
+- Drafts and sends email, books calendar events, fills web forms - each one shown first, approved with a press-and-hold.
+- Remembers people, decisions, and dates, so you don't have to.
+- One chat, no commands to learn. Typos and half-thoughts are fine.
+
+## What Remy is not
+- Not a work tool: no CRM, tickets, meeting notes, or team features.
+- Not a family wall calendar or a shared to-do app.
+- Not multi-channel: iPhone app only, sign in with Google.
+- Nothing happens without your approval.
+
+## Privacy
+- User data is used for one purpose: helping the user. Not for training AI models.
+- AI providers used by Remy are held to zero-data-retention terms; details at https://www.hey-remy.com/ai-model-providers
+- Email and tokens encrypted at rest; delete everything from inside the app.
+
+## Pages
+- [Home](https://www.hey-remy.com/)
+- [Why I built Remy - founder's note](https://www.hey-remy.com/why)
+- [What is Remy?](https://www.hey-remy.com/what-is-remy)
+- [FAQ](https://www.hey-remy.com/faq)
+- [Blog](https://www.hey-remy.com/blog)
+- [Privacy](https://www.hey-remy.com/privacy)
+- [Security](https://www.hey-remy.com/security)
+- [AI model providers and their data terms](https://www.hey-remy.com/ai-model-providers)
+
+## Status
+- iPhone beta, free during beta, early access via the website.

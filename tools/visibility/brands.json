@@ -1,0 +1,24 @@
+{
+  "remy": ["hey-remy", "hey remy", "heyremy", "Remy (hey", "Remy, the AI assistant for your life", "Remy - the AI assistant for your life"],
+  "competitors": {
+    "Ohai": ["ohai"],
+    "Maple": ["maple"],
+    "Skylight": ["skylight"],
+    "Cozi": ["cozi"],
+    "Motion": ["usemotion", "motion"],
+    "Reclaim": ["reclaim"],
+    "Gemini": ["gemini"],
+    "ChatGPT": ["chatgpt"],
+    "Todoist": ["todoist"],
+    "Lindy": ["lindy"],
+    "Sense": ["sense"],
+    "Jam": ["jam"],
+    "Akiflow": ["akiflow"],
+    "Goblin.tools": ["goblin"],
+    "Siri": ["siri"],
+    "Copilot": ["copilot"],
+    "Superhuman": ["superhuman"],
+    "Shortwave": ["shortwave"],
+    "SaneBox": ["sanebox"]
+  }
+}

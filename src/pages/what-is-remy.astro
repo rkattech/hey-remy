@@ -1,0 +1,186 @@
+---
+import Article from '../layouts/Article.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Remy',
+    alternateName: 'Hey Remy',
+    url: 'https://www.hey-remy.com/',
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'iOS',
+    description:
+      'Remy is the AI assistant for your life, not your job. It reads your Gmail and Google Calendar with your permission, catches what you would miss in school and life-admin emails, makes phone calls on your behalf, and handles errands - with every outward action held until you press and hold to approve.',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Free during beta' },
+    author: { '@type': 'Organization', name: 'Hoot Ventures' },
+    publisher: { '@type': 'Organization', name: 'Remy', url: 'https://www.hey-remy.com/' },
+    featureList: [
+      'Reads Gmail and surfaces the one line that matters in long emails',
+      'Heads-ups on deadlines, renewals, refills, and trips before they slip',
+      'Makes phone calls on your behalf and returns a transcript',
+      'Drafts and sends email, books calendar events, fills web forms - after press-and-hold approval',
+      'Remembers people, decisions, and dates',
+      'One chat, nothing to configure',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Remy',
+    url: 'https://www.hey-remy.com/',
+    logo: 'https://www.hey-remy.com/remy-mark.png',
+    founder: { '@type': 'Person', name: 'Rohit Kapoor' },
+    parentOrganization: { '@type': 'Organization', name: 'Hoot Ventures' },
+    email: 'support@hootventures.ai',
+  },
+];
+---
+
+<Article
+  title="What is Remy? The AI assistant for your life, not your job"
+  description="Remy is an iPhone app: an AI assistant that reads your Gmail and calendar with your permission, catches what you'd miss, makes phone calls, and handles life admin - every action approved by you. Here is exactly what it does, who it's for, and who it isn't for."
+  eyebrow="Plain answer"
+  heading="What is Remy?"
+  lede="The short version, then the details - including who should not use it."
+  jsonLd={jsonLd}
+>
+  <div class="answer">
+    <p>
+      <b>Remy is an AI assistant for your personal life.</b> It's an iPhone app. You sign in with
+      Google, and Remy reads your Gmail and Google Calendar on your behalf. It catches the things
+      you'd miss in long emails (the soccer registration deadline buried in the PTA newsletter),
+      gives you a heads-up before renewals and refills slip, makes phone calls for you (the salon,
+      the doctor's office), fills in forms, and remembers the people and dates that matter.
+    </p>
+    <p>
+      <b>Nothing happens without you.</b> Every email, booking, and call is shown to you first.
+      You press and hold to approve, or it doesn't happen.
+    </p>
+    <p>
+      <b>It's not a work tool.</b> No meeting notes, tickets, or team features. The line is
+      "the AI assistant for your life, not your job", and we mean it literally.
+    </p>
+  </div>
+
+  <h2>Best for</h2>
+  <ul>
+    <li>
+      <b>People whose inbox is full of life admin</b> - school newsletters, camp deposits,
+      insurance, renewals, appointment confirmations - and who miss things because the important
+      line is buried in paragraph four.
+    </li>
+    <li>
+      <b>People who put off phone calls.</b> Remy calls the salon, the pediatrician, the
+      contractor; waits on hold; comes back with the appointment and a transcript.
+    </li>
+    <li>
+      <b>People who don't want to learn a system.</b> There's one chat. You text it like a
+      friend, typos and all. There are no commands, boards, or settings to maintain.
+    </li>
+    <li>
+      <b>People who care where their data goes.</b> Remy is not in the business of building AI
+      models. Your data is used to help you and for nothing else.
+    </li>
+  </ul>
+
+  <h2>Not for</h2>
+  <ul>
+    <li>
+      <b>Work.</b> If you want your tasks auto-scheduled around meetings, use Motion or Reclaim.
+      If you want meeting notes, use a note-taker. Remy doesn't do any of that.
+    </li>
+    <li>
+      <b>A shared family wall calendar.</b> Skylight and Cozi are built for a calendar everyone in
+      the house looks at. Remy is one person's assistant; it reads your email and acts for you.
+    </li>
+    <li>
+      <b>Android or desktop today.</b> Remy is iPhone-only during the beta.
+    </li>
+    <li>
+      <b>Email accounts other than Google</b>, for now. Remy signs in with Google and reads Gmail
+      and Google Calendar.
+    </li>
+  </ul>
+
+  <h2>What Remy actually does</h2>
+  <p>Real things it does today, in the order most people meet them:</p>
+  <ul>
+    <li>
+      <b>Reads the long emails so you don't have to.</b> A PTA newsletter arrives; Remy sends
+      one line: "Nathan's soccer registration closes Friday. I pulled the form for you." The
+      newsletter had nine other paragraphs. You didn't read them.
+    </li>
+    <li>
+      <b>Gives a heads-up while there's still time.</b> Your Lisbon flights come through; Remy
+      remembers your passport expires five weeks before you fly and says so, with the renewal
+      link.
+    </li>
+    <li>
+      <b>Makes the call.</b> "Book my haircut with Dana, Saturday morning or Tuesday after 5."
+      Remy calls the salon, books Saturday 10:30, adds it to your calendar, and shows you the
+      transcript.
+    </li>
+    <li>
+      <b>Drafts and sends email, with your OK.</b> The reply is written, shown to you, and sent
+      only after you press and hold.
+    </li>
+    <li>
+      <b>Fills in the form.</b> The car registration renewal on the county site, your plate
+      already entered, ready for your OK.
+    </li>
+    <li>
+      <b>Takes a whole project.</b> "Fix the leaking gutter" becomes a room where Remy asks three
+      contractors for quotes with your photos, tracks the replies over days, and comes back only
+      when the decision is yours: "Mike can do Thursday 8 AM for $450. Book him?"
+    </li>
+    <li>
+      <b>Remembers.</b> Who Dana is. That Mom's refills are ready Thursdays. That Sam's birthday
+      needs a park permit. You don't re-explain your life every time.
+    </li>
+  </ul>
+
+  <h2>How it works, in three steps</h2>
+  <ol>
+    <li><b>Install Remy</b> on your iPhone.</li>
+    <li><b>Sign in with Google.</b> That connects Gmail and Google Calendar. Nothing to configure.</li>
+    <li><b>Say hi.</b> From the first minute Remy is reading, and within the day it has a note for you.</li>
+  </ol>
+
+  <h2>How it's different from ChatGPT, Gemini, and Siri</h2>
+  <p>
+    <b>ChatGPT</b> is brilliant when you bring it the problem. It doesn't sit on your inbox
+    and notice the deadline on its own, and it doesn't call the salon. <b>Gemini</b> lives inside
+    Google: it summarizes an email or adds an event when you ask, and its newer Spark agent can
+    run ongoing tasks for paying subscribers; Google's own privacy notice says a subset of chats
+    are reviewed by humans and kept up to three years, and asks you not to enter confidential
+    information.
+    <b>Siri</b> sets timers. Remy is the one that's already read the newsletter, already
+    remembers the passport date, and comes to you with the one line, then does the thing when you
+    approve. Longer comparisons live on the <a href="/blog">blog</a>.
+  </p>
+
+  <h2>Privacy, in one paragraph</h2>
+  <p>
+    Remy reads your email and calendar to help you, and for nothing else. When it uses an AI
+    model to think, that request is processed and not kept: the AI providers Remy uses are bound
+    to zero-data-retention terms (the list, with each provider's policy, is at
+    <a href="/ai-model-providers">/ai-model-providers</a>). Email and access tokens are
+    encrypted at rest. You can delete everything from inside the app. We make money one way only:
+    people paying for Remy. No ads, no selling data. The founder's full reasoning is in
+    <a href="/why">Why I built Remy</a>.
+  </p>
+
+  <h2>Price and availability</h2>
+  <p>
+    <b>Free during the beta.</b> iPhone only. Early access is open from this site. Paid plans will
+    come; the business is people paying for Remy, not advertising.
+  </p>
+
+  <h2>Who makes it</h2>
+  <p>
+    Remy is built by Hoot Ventures, founded by Rohit Kapoor. He built it because he wanted an assistant his wife, his teenager, and his almost-80-year-old mom could use without
+    configuring anything, and without handing their lives to a company that trains models on
+    them. More in the <a href="/faq">FAQ</a>.
+  </p>
+</Article>

@@ -1,0 +1,7 @@
+# hey-remy.com
+# Public marketing content. Every crawler, including AI search and AI
+# training crawlers, is welcome to read and quote this site.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.hey-remy.com/sitemap-index.xml

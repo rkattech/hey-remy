@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import Article from '../../layouts/Article.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const url = new URL(`/blog/${post.id}/`, Astro.site).toString();
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  dateModified: (post.data.updated ?? post.data.date).toISOString(),
+  author: { '@type': 'Person', name: 'Rohit Kapoor', url: 'https://www.hey-remy.com/why' },
+  publisher: { '@type': 'Organization', name: 'Remy', url: 'https://www.hey-remy.com/' },
+  mainEntityOfPage: url,
+  about: { '@type': 'SoftwareApplication', name: 'Remy', url: 'https://www.hey-remy.com/' },
+};
+const faq =
+  post.data.question && post.data.answer
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: post.data.question,
+            acceptedAnswer: { '@type': 'Answer', text: post.data.answer },
+          },
+        ],
+      }
+    : null;
+const jsonLd = faq ? [article, faq] : article;
+---
+
+<Article
+  title={post.data.title}
+  description={post.data.description}
+  eyebrow={post.data.eyebrow ?? 'From the Remy blog'}
+  heading={post.data.heading ?? post.data.title}
+  lede={post.data.lede}
+  date={post.data.date}
+  updated={post.data.updated}
+  author={post.data.author}
+  jsonLd={jsonLd}
+>
+  <Content />
+</Article>

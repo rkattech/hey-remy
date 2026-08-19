@@ -1,0 +1,171 @@
+---
+import Layout from './Layout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import EarlyAccess from '../components/EarlyAccess.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+  heading: string;
+  lede?: string;
+  date?: Date;
+  updated?: Date;
+  author?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  showCta?: boolean;
+}
+
+const {
+  title,
+  description,
+  eyebrow,
+  heading,
+  lede,
+  date,
+  updated,
+  author,
+  jsonLd,
+  showCta = true,
+} = Astro.props;
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+---
+
+<Layout title={title} description={description}>
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  <SiteNav />
+
+  <main class="mx-auto max-w-2xl px-6 py-16 sm:py-20">
+    {
+      eyebrow && (
+        <p class="text-xs font-bold uppercase tracking-[0.06em] text-[var(--muted)]">{eyebrow}</p>
+      )
+    }
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{heading}</h1>
+    {lede && <p class="lede mt-5">{lede}</p>}
+    {
+      (author || date) && (
+        <p class="mt-5 text-sm text-[var(--muted)]">
+          {author && <span>{author}</span>}
+          {author && date && <span> &middot; </span>}
+          {date && <time datetime={date.toISOString()}>{fmt(date)}</time>}
+          {updated && date && updated.getTime() !== date.getTime() && (
+            <span> &middot; updated <time datetime={updated.toISOString()}>{fmt(updated)}</time></span>
+          )}
+        </p>
+      )
+    }
+
+    <div class="prose-remy mt-9">
+      <slot />
+    </div>
+
+    {showCta && <EarlyAccess />}
+  </main>
+
+  <SiteFooter />
+</Layout>
+
+<style is:global>
+  .lede {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .prose-remy {
+    font-size: 17.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .prose-remy > * + * {
+    margin-top: 22px;
+  }
+  .prose-remy h2 {
+    margin-top: 44px;
+    font-size: 26px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .prose-remy h3 {
+    margin-top: 30px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .prose-remy b,
+  .prose-remy strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .prose-remy a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-remy ul,
+  .prose-remy ol {
+    padding-left: 1.3em;
+  }
+  .prose-remy li + li {
+    margin-top: 8px;
+  }
+  .prose-remy blockquote {
+    border-left: 3px solid var(--tint-border);
+    padding-left: 18px;
+    color: var(--ink-2);
+  }
+  .prose-remy table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+  .prose-remy th,
+  .prose-remy td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+  .prose-remy th {
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .prose-remy .table-wrap {
+    overflow-x: auto;
+  }
+  .prose-remy .answer {
+    background: var(--surface);
+    border: 1px solid var(--divider);
+    border-radius: 16px;
+    padding: 18px 20px;
+    color: var(--ink);
+  }
+  .prose-remy .answer p + p {
+    margin-top: 10px;
+  }
+  .prose-remy .note {
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .prose-remy pre {
+    background: var(--surface) !important;
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.55;
+    overflow-x: auto;
+    color: var(--ink);
+  }
+  .prose-remy hr {
+    border: 0;
+    border-top: 1px solid var(--divider);
+    margin-top: 40px;
+  }
+</style>
