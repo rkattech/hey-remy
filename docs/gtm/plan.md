@@ -20,8 +20,8 @@ phone calls, and does the admin with your press-and-hold approval. Not a work to
 
 ## Workstreams, in priority order
 
-P0 Foundation (DONE 2026-08-19, pending publish): crawlers allowed (robots.txt;
-   Cloudflare dashboard toggle owed by founder), sitemap, llms.txt, 404, JSON-LD
+P0 Foundation LIVE 2026-08-19 (merged to main, IndexNow pinged): crawlers allowed (robots.txt;
+   Cloudflare managed robots.txt switched off by founder 2026-08-19), sitemap, llms.txt, 404, JSON-LD
    (SoftwareApplication, Organization, FAQPage, Article), /what-is-remy, /faq,
    blog scaffold + RSS, visibility tracker (tools/visibility).
 P1 The library: ~30 answer pages over ~10 weeks, 2-3/week. Queue in content-queue.md.

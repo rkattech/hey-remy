@@ -9,9 +9,9 @@ robust, comprehensive, furthermore, crucial, landscape, unlock, empower, journey
 Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 
 ## Comparisons (Remy vs X)
-- [DRAFTED] remy-vs-ohai
-- [DRAFTED] remy-vs-motion (covers Reclaim)
-- [DRAFTED] remy-vs-gemini
+- [LIVE 2026-08-19] remy-vs-ohai
+- [LIVE 2026-08-19] remy-vs-motion (covers Reclaim)
+- [LIVE 2026-08-19] remy-vs-gemini
 - [ ] remy-vs-chatgpt (connectors: reads on ask, sends with approval, may train on
       Free/Plus/Go/Pro unless setting off - verified quote in research)
 - [ ] remy-vs-skylight
@@ -22,9 +22,9 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 - [ ] remy-vs-reclaim (split out once Motion page ranks)
 
 ## Best-for / "is there an AI that..."
-- [DRAFTED] best-ai-for-school-emails
-- [DRAFTED] ai-assistant-that-makes-phone-calls
-- [DRAFTED] overwhelmed-life-admin-ai
+- [LIVE 2026-08-19] best-ai-for-school-emails
+- [LIVE 2026-08-19] ai-assistant-that-makes-phone-calls
+- [LIVE 2026-08-19] overwhelmed-life-admin-ai
 - [ ] ai-that-reads-my-email-and-tells-me-what-matters
 - [ ] ai-assistant-for-adhd-life-admin
 - [ ] ai-assistant-for-busy-parents (life, not calendar)
