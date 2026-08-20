@@ -30,9 +30,7 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 - [ ] ai-assistant-for-busy-parents (life, not calendar)
 - [ ] ai-that-reminds-you-about-renewals-passport-car-registration
 - [ ] ai-assistant-that-asks-before-acting (approval as the feature)
-- [ ] private-ai-assistant-that-doesnt-train-on-your-data (the Private pillar; wording
-      GATED on board 1.5/1.8 - use only the already-printed /why and /ai-model-providers
-      language)
+- [DRAFTED] private-ai-assistant-no-training (printed-claims only; provider page carve-outs mirrored)
 - [ ] best-ai-personal-assistant-apps-iphone-2026 (honest roundup incl. Remy)
 - [ ] ai-assistant-for-caregivers (Mom's refills, appointments)
 - [ ] ai-assistant-that-handles-a-whole-project (gutter, party, claim)
@@ -43,8 +41,14 @@ Status: DRAFTED = in src/content/blog, awaiting founder read · LIVE = pushed.
 - [ ] motion-alternatives-for-personal-life
 - [ ] cozi-alternatives-with-ai
 
+## Privacy theme (opened 2026-08-20; founder-ruled differentiator)
+- [DRAFTED] is-anything-you-tell-an-ai-private (incidents record 2023-2026, all sourced)
+- [ ] what-does-remy-do-with-my-email (transparency page: the data path, plain English)
+- [ ] ai-and-your-kids-information (school/family data angle)
+- [ ] questions-to-ask-any-ai-app (checklist page; schema-friendly)
+
 ## Explainers / founder notes
 - [ ] why-an-assistant-should-ask-before-it-acts (hold-to-approve)
-- [ ] what-zero-data-retention-means-in-plain-english
+- [DRAFTED] what-zero-data-retention-means (anchor explainer)
 - [ ] we-ran-40-real-life-scenarios-through-5-ai-assistants (original research, P6)
 - [ ] what-remy-does-on-day-one (the day-one note, with the real artifact)
