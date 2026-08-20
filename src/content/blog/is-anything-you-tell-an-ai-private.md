@@ -1,78 +1,84 @@
 ---
 title: "Is anything you tell an AI private? The documented record, 2023-2026"
-description: "Before you tell an AI assistant about your health, your kids, or your money, here is what has actually happened to people's AI conversations - training defaults, human review, court-ordered retention, chats indexed by Google, and logs cited in court. Every item dated and sourced, with the questions to ask any AI app."
+description: "Training defaults, human review, court-ordered retention, chats indexed by Google, logs cited in court. What has actually happened to people's AI conversations, with dates and sources, from the founder of Remy."
 heading: "Is anything you tell an AI private?"
-lede: "Not a scare piece. A dated, sourced record of what has actually happened to people's AI conversations - and what it teaches about where to put your private life."
-eyebrow: "Plain answer"
+lede: "I kept a folder of these stories while I was building Remy. This is that folder, cleaned up, dated, and sourced."
+eyebrow: "From the founder"
 date: 2026-08-20
 question: "Is it safe to tell ChatGPT or Gemini personal things?"
-answer: "Treat consumer AI chats as less private than you'd assume. On personal plans, ChatGPT's help pages say conversations may be used to train models unless you opt out, and Google's Gemini privacy notice says a subset of chats are read by human reviewers and kept up to three years, adding 'please don't enter confidential information.' Stored chats have also left the building in documented ways: OpenAI was court-ordered in 2025 to preserve even deleted ChatGPT conversations and in 2026 to hand 20 million chat logs to litigation plaintiffs; shared ChatGPT and Grok chats were indexed by Google; Meta AI's feed surfaced private conversations publicly; and prosecutors have cited ChatGPT history in a criminal case. The pattern: whatever is stored can be trained on, reviewed, leaked, indexed, or subpoenaed. Apps built on zero-data-retention AI - where the model provider keeps nothing after answering - remove most of that surface. Remy, the AI assistant for your life, is built that way."
+answer: "Treat consumer AI chats as less private than you'd assume. On personal plans, ChatGPT's help pages say conversations may be used to train models unless you opt out, and Google's Gemini privacy notice says a subset of chats are read by human reviewers and kept up to three years, adding 'please don't enter confidential information.' Stored chats have also left the building in documented ways: OpenAI was court-ordered in 2025 to preserve even deleted ChatGPT conversations and in 2026 to hand 20 million chat logs to litigation plaintiffs; shared ChatGPT and Grok chats were indexed by Google; Meta AI's feed surfaced private conversations publicly; and prosecutors have cited ChatGPT history in a criminal case. Whatever is stored can be trained on, reviewed, leaked, indexed, or subpoenaed. Apps built on zero-data-retention AI, where the model provider keeps nothing after answering, remove most of that surface. Remy, the AI assistant for your life, is built that way."
 ---
 
-<div class="answer">
-<p><b>Short answer:</b> a consumer AI chat is closer to email than to a diary. On default settings it may train models or be read by reviewers, it is stored, and stored things can be ordered kept, handed over, indexed, or breached - all of which has now actually happened.</p>
-<p><b>The one-line lesson:</b> what is never stored can't leak, can't be reviewed, and can't be demanded. Ask any AI app what its model providers keep.</p>
-</div>
+I loved ChatGPT from the first week. I say that up front because this is not a hit piece, and because it's the reason this page exists: I kept typing personal things into it, and something in me kept hesitating. My kid's school. A health question. Plans with my wife. Eventually I started saving the news stories that explained the hesitation, and that folder became Remy, and now it's become this page.
 
-I'm the founder of Remy, an AI assistant that runs on zero-data-retention providers, so I have a position here; that's exactly why every claim below carries a date and a source, most of them the companies' own pages. Nothing in this list is a rumor.
+Everything below actually happened. Each item has a date, and most of the quotes come from the companies' own pages. I run an AI assistant that competes with some of these products, so don't take my word for anything - the sources are at the bottom, check them.
 
-## 1. On default settings, your chats are working material
+## Start with the fine print, because it's the part that covers everyone
 
-**ChatGPT (personal plans).** OpenAI's own help center: ChatGPT "improves by further training on the conversations people have with it, unless you opt out," and "when you use our services for individuals such as ChatGPT and Codex, we may use your content to train our models." Business and Enterprise plans are excluded by default; individuals have to find the "Improve the model for everyone" switch. The same logic extends to connected apps: for Free, Plus, Go, and Pro users, "OpenAI may use information accessed from apps to train our models" when that setting is on.
+OpenAI's help center, today: ChatGPT "improves by further training on the conversations people have with it, unless you opt out." Another line on the same page: "When you use our services for individuals such as ChatGPT and Codex, we may use your content to train our models." Business customers are excluded by default. Individuals get a switch called "Improve the model for everyone," and it starts in the on position. If you've connected apps - Gmail, say - the connectors page says the same thing about data accessed from them.
 
-**Gemini (consumer).** Google's Gemini privacy notice, on its own support pages: "Human reviewers (including trained reviewers from our service providers) review some of the data we collect." Reviewed chats "are not deleted when you delete your activity. Instead, they are retained for up to three years." And, in Google's own words: "Please don't enter confidential information that you wouldn't want a reviewer to see or Google to use to improve our services, including machine-learning technologies."
+Google's version is blunter, which I almost respect. The Gemini privacy notice: "Human reviewers (including trained reviewers from our service providers) review some of the data we collect." Reviewed chats "are not deleted when you delete your activity. Instead, they are retained for up to three years." And then this sentence, verbatim: "Please don't enter confidential information that you wouldn't want a reviewer to see or Google to use to improve our services, including machine-learning technologies."
 
-That last sentence is the honest version of this whole section, written by the vendor itself.
+Google wrote that. About its own product. It's good advice.
 
-## 2. Stored chats can be ordered kept - even the deleted ones
+## Then the court orders
 
-In the New York Times' copyright suit against OpenAI, a federal magistrate ordered on May 13, 2025: "OpenAI is NOW DIRECTED to preserve and segregate all output log data that would otherwise be deleted" - explicitly including data users had asked to delete. OpenAI itself called the demand a fundamental conflict with "the privacy commitments we have made to our users." That order was later narrowed and lifted (September-October 2025), but the follow-on went further: in November 2025, upheld by the district judge in January 2026, OpenAI was ordered to hand plaintiffs 20 million de-identified ChatGPT conversations. The magistrate noted those 20 million are "only a small fraction of the 'tens of billions' of consumer ChatGPT logs that OpenAI retains."
+This is the part most people haven't heard, and it's the part that changed how I think about all of it.
 
-Read that last clause again: tens of billions of retained consumer conversations. Deletion buttons don't bind a court, and retention is what makes any of this possible.
+In the New York Times' copyright suit against OpenAI, a federal magistrate issued an order on May 13, 2025: "OpenAI is NOW DIRECTED to preserve and segregate all output log data that would otherwise be deleted." Including chats users had deleted. Including users who'd opted out. OpenAI fought it - their COO called the demand a fundamental conflict with "the privacy commitments we have made to our users" - and by October the order was narrowed and lifted.
 
-## 3. Stored chats have simply leaked
+The follow-on was bigger. In November 2025, upheld by the district judge in January 2026, OpenAI was ordered to hand the plaintiffs 20 million ChatGPT conversations. De-identified, but whole conversations. And buried in the ruling is the number that stopped me: the magistrate noted those 20 million were "only a small fraction of the 'tens of billions' of consumer ChatGPT logs that OpenAI retains."
 
-- **March 2023:** a caching bug let some ChatGPT users see other users' chat titles; OpenAI's postmortem says payment details of about 1.2% of Plus subscribers - name, email, billing address, card type, last four digits - may have been visible. OpenAI took the service offline and fixed it.
-- **July-August 2025:** ChatGPT conversations users had marked shareable started appearing in Google search results, personal content included. OpenAI's security chief called it "a short-lived experiment" that "introduced too many opportunities for folks to accidentally share things they didn't intend to," and killed the feature.
-- **August 2025:** Fortune reported "more than 370,000 Grok chats have been indexed by search engines," including medical and psychological questions and at least one password; the share links were public and crawlable without users realizing.
-- **June 2025:** Meta AI's Discover feed surfaced users' conversations - medical, legal, deeply personal - publicly, with coverage concluding many users had no idea the share flow published to the world.
+Tens of billions. Retained. The delete button in the app doesn't bind a courtroom, and none of this would have been possible if the conversations hadn't been sitting there in the first place.
 
-Different companies, same shape: content that existed on a server met a feature or a bug, and became public.
+## The leaks were more ordinary than you'd think
 
-## 4. There is no privilege on an AI conversation
+No hacking-movie stuff. Just stored data meeting a bug, or a feature that worked as designed.
 
-Sam Altman, July 2025, on why he finds ChatGPT-as-therapist worrying: "People talk about the most personal sh** in their lives to ChatGPT… if you talk to a therapist or a lawyer or a doctor about those problems, there's legal privilege… we haven't figured that out yet for when you talk to ChatGPT." In a lawsuit, he added, OpenAI could be legally required to produce those conversations.
+March 2023: a caching bug let some ChatGPT users see the titles of other people's chats. OpenAI's own postmortem says payment details of about 1.2% of Plus subscribers - name, email, billing address, card type, last four digits - may have been visible too. They took the whole service offline to fix it.
 
-It's no longer hypothetical: in October 2025, the federal arson complaint in the Palisades Fire case cited the suspect's ChatGPT history - images he'd generated and questions he'd asked - as evidence. Whatever that case's outcome, the mechanism is now on the record: AI chat logs are discoverable, and prosecutors use them.
+July 2025: ChatGPT conversations that users had marked shareable started showing up in Google search results. Some were deeply personal. OpenAI's security chief called it "a short-lived experiment" that "introduced too many opportunities for folks to accidentally share things they didn't intend to," and killed the feature within days.
 
-## 5. Even your inbox summaries have an attack surface
+August 2025, same shape, worse numbers: Fortune reported "more than 370,000 Grok chats have been indexed by search engines," including medical and psychological questions and at least one password. The share links were public and crawlable. Users had no warning.
 
-Two 2025 security disclosures worth knowing if an AI reads your email: a zero-click flaw in Microsoft 365 Copilot (patched, no known exploitation) showed a crafted email could make an AI assistant exfiltrate data with no user action; and a researcher showed invisible text in an email could make Gemini's Gmail summary display a fake security alert with an attacker's phone number. Both were fixed; both are reminders that "the AI reads your email" is a security design problem, not just a feature. (It's why Remy treats everything arriving in email as untrusted input, structurally separate from your instructions.)
+And in June 2025, Meta AI's app had a Discover feed where people's conversations - medical, legal, personal - were being published to the world, with coverage concluding many users simply didn't understand the share flow was public.
 
-## What this record actually teaches
+Four companies, one pattern. The conversation existed on a server, and then one day it existed somewhere else.
 
-Not "these companies are evil." Every incident above was patched, disclosed, or fought in court by the company involved. The lesson is structural:
+## "We haven't figured that out yet"
 
-1. **Retention is the root.** Every path above - training, review, preservation orders, handovers, indexing, breaches - starts with a stored conversation. What's never stored can't take any of those paths.
-2. **Defaults decide what happens to most people.** Almost nobody flips the setting.
-3. **Business model is the tide.** A company that gets better by having more data will, over time, ask for more data. Policies move with incentives.
+Sam Altman said the quiet part on a podcast in July 2025: "People talk about the most personal sh** in their lives to ChatGPT," but "if you talk to a therapist or a lawyer or a doctor about those problems, there's legal privilege... we haven't figured that out yet for when you talk to ChatGPT." In a lawsuit, he added, OpenAI could be required to produce those conversations.
 
-## The questions to ask any AI app (including mine)
+Three months later it wasn't hypothetical. The federal arson complaint in the Palisades Fire case cited the suspect's ChatGPT history - images he'd generated, questions he'd asked - as evidence. I make no claim about that case's outcome. The mechanism is the point: AI chat logs are discoverable, and prosecutors now use them.
 
-1. Which AI model providers process my words, and do they retain anything?
-2. Does anything train on my data, and what's the default?
+## What I take from all of it
+
+Not that these companies are villains. Every incident above got patched, disclosed, or fought in court by the company involved. What I take from it is structural, and it's three sentences.
+
+Everything on this list - the training, the reviewers, the preservation order, the 20 million logs, the indexing, the breach - required a stored conversation. Storage is the root; everything else is a branch. And a company whose models get better with more data will always, eventually, want more data - not because anyone there is evil, but because that's which way their incentives point.
+
+That's the whole reason Remy exists, and I wrote the longer version in [Why I built Remy](/why).
+
+## What I'd ask any AI app before telling it my life
+
+The same five questions I'd want you to ask Remy:
+
+1. Which AI providers process my words, and what do they keep?
+2. Does anything train on my data - and what's the default setting?
 3. Do humans review my conversations?
 4. What does the app itself store, and is it encrypted?
-5. Can I delete everything - and whom does that deletion actually bind?
+5. Can I actually delete everything - and who does that deletion bind?
 
-The plain-English decoder for these terms is in [What "zero data retention" actually means](/blog/what-zero-data-retention-means/).
+If the answers aren't on a public page, you have your answer. (The jargon these answers come wrapped in - "zero data retention," "de-identified," "opt out" - is decoded in [plain English here](/blog/what-zero-data-retention-means/).)
 
-## Where Remy stands
+## Remy's answers
 
-Remy is the AI assistant for your life, not your job: it reads your Gmail and Google Calendar, catches what you'd miss, and does the admin with your press-and-hold approval. Because it handles exactly the kind of data this page is about, it's built against the record above: for the text processing that is nearly everything Remy does, it uses only AI providers under zero-data-retention terms - the request is processed and never kept - and none of them are OpenAI, Google, or Anthropic models. Nothing trains on your data. What Remy itself stores to be your assistant is encrypted at rest and deletable from inside the app. The provider list, including the two lanes still marked "verification in progress," is public at [/ai-model-providers](/ai-model-providers) - held to the same standard as this page: dated, and honest about what's not verified yet.
+Remy is an AI assistant for your life - it reads your Gmail and calendar, catches what you'd miss, and does the admin with your press-and-hold approval - which means it handles exactly the kind of data this page is about. So: for the text processing that is nearly everything Remy does, it uses only AI providers under zero-data-retention terms. The request is processed, answered, and gone. Nothing to train on, review, index, or produce. None of those models come from OpenAI, Google, or Anthropic. What Remy itself stores to be your assistant is encrypted, and you can delete all of it from inside the app.
 
-The full reasoning is in [Why I built Remy](/why). And if your conclusion from this page is "I don't want any AI near my personal life," that is a coherent position - this page is for deciding with the record in front of you.
+Two lanes - live voice and the phone-call stack - are still marked "verification in progress" and "under review" on our provider page, because I'd rather print that than round up. The full list, with each provider's policy linked: [/ai-model-providers](/ai-model-providers).
+
+If your reaction to this page is "then I don't want any AI near my personal life" - fair. That's a coherent answer. I just wanted you deciding with the record in front of you instead of the marketing.
 
 ---
 
-*Sources, in order used: OpenAI Help Center ("How your data is used to improve model performance"; "Apps in ChatGPT"), Google Gemini Apps Privacy Hub, the May 13 2025 preservation order in NYT v. OpenAI and OpenAI's response page, Bloomberg Law on the 20-million-logs order, OpenAI's March 2023 postmortem, Fortune (Aug 2025, Grok and ChatGPT shared-chat indexing), Malwarebytes (Meta AI Discover feed, June 2025), TechCrunch (Altman podcast remarks, July 2025; Samsung ban, May 2023), Axios/CNN (Palisades Fire complaint, Oct 2025), Infosecurity Magazine (EchoLeak, June 2025), BleepingComputer (Gemini Gmail injection, July 2025). Checked August 2026; if a source moves or a fact changes, this page's date moves with the correction.*
+*Sources: OpenAI Help Center ("How your data is used to improve model performance"; "Apps in ChatGPT"), Google's Gemini Apps Privacy Hub, the May 13, 2025 preservation order in NYT v. OpenAI and OpenAI's response page, Bloomberg Law on the 20-million-logs ruling, OpenAI's March 2023 postmortem, Fortune (August 2025, Grok and ChatGPT shared-chat indexing), Malwarebytes (Meta AI Discover feed, June 2025), TechCrunch (Altman podcast remarks, July 2025), Axios and CNN (Palisades Fire complaint, October 2025). Checked August 2026. If a fact changes or a source moves, this page's date moves with the correction.*
