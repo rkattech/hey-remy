@@ -43,7 +43,7 @@ And Spark requires Keep Activity to be on. Data from connected apps like Gmail i
 
 For work, a Workspace business plan changes those terms. For your personal Gmail, that's the deal. I loved Gemini and ChatGPT from the first week, and this is exactly the reason I never felt comfortable putting my kid's school, a health question, or plans with my wife into them. A company whose business is building models, holding my family's life, is a conflict of interest, whichever box I tick. The long version is in [Why I built Remy](/why).
 
-Remy's side of it: your data is used to help you and for nothing else. When Remy uses an AI model, the request is processed and not kept; the providers are bound to zero-data-retention terms and listed, with their policies, at [/ai-model-providers](/ai-model-providers). You can delete everything from inside the app.
+Remy's side of it: your data is used to help you and for nothing else. No provider Remy uses may train on your data - contractually, all of them. Most processing runs on zero-data-retention terms, the request processed and not kept. And full disclosure, because this page is about Gemini: Remy itself is moving one lane - the web-errand browser - onto Google's enterprise Gemini API, on paid terms with training off and your data not mixed with anyone else's; the human-review exception request is filed and pending, and the exact state of that arrangement is published at [/ai-model-providers](/ai-model-providers). The difference this post is about isn't the model - it's the terms. Consumer Gemini's terms are the notice quoted above. Remy's terms with every provider are: your data works for you, trains nothing, and the receipts are public. You can delete everything from inside the app.
 
 ## Approval: undo after vs approve before
 
@@ -70,4 +70,4 @@ Small thing, big difference in how it feels. Gemini adds the event and offers un
 
 ## What's true as of August 2026
 
-Gemini: free tier; Google AI Plus $4.99, Pro $19.99, Ultra from $99.99/mo; Gemini in Gmail drafts and adds events; Spark on Pro/Ultra, not EEA/UK/CH/NG, asks before sends/purchases/forms; human review per Google's notice. Remy: iPhone beta, free, reads Gmail + Google Calendar, proactive notes, calls, forms, drafts, press-and-hold approvals, no training, ZDR providers. When either side changes, the date on this page moves.
+Gemini: free tier; Google AI Plus $4.99, Pro $19.99, Ultra from $99.99/mo; Gemini in Gmail drafts and adds events; Spark on Pro/Ultra, not EEA/UK/CH/NG, asks before sends/purchases/forms; human review per Google's notice. Remy: iPhone beta, free, reads Gmail + Google Calendar, proactive notes, calls, forms, drafts, press-and-hold approvals, no training at any provider, per-lane terms published. When either side changes, the date on this page moves - as it did on August 22, 2026, when Remy's browser lane began moving to enterprise Gemini.

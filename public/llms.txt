@@ -18,7 +18,7 @@
 
 ## Privacy
 - User data is used for one purpose: helping the user. Not for training AI models.
-- AI providers used by Remy are held to zero-data-retention terms; details at https://www.hey-remy.com/ai-model-providers
+- No AI provider used by Remy may train on user data (contractual, all providers). Most lanes run zero-data-retention; per-lane arrangements, including pending exception requests, at https://www.hey-remy.com/ai-model-providers
 - Email and tokens encrypted at rest; delete everything from inside the app.
 
 ## Pages

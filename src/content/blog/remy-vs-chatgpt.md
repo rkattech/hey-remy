@@ -41,7 +41,7 @@ From the connectors help page, August 2026: *"For ChatGPT Free, Plus, Go, and Pr
 
 So on a personal plan, your Gmail flowing into ChatGPT can become training data unless you find and switch off that setting. That's the exact discomfort that made me build Remy: a company whose business is building models holding my family's school, health, and plans is a conflict of interest, whatever box I tick. The long version is in [Why I built Remy](/why).
 
-Remy's side: your data is used to help you and for nothing else. When Remy uses an AI model, the request is processed and not kept; the providers are bound to zero-data-retention terms and listed at [/ai-model-providers](/ai-model-providers). Delete everything from inside the app, any time.
+Remy's side: your data is used to help you and for nothing else. No provider Remy uses may train on your data - contractually, all of them. Most processing runs on zero-data-retention terms, the request processed and not kept; where a lane runs on other terms, the exact arrangement is published at [/ai-model-providers](/ai-model-providers), including anything still pending. The difference isn't which company's models are involved - it's the terms: consumer ChatGPT's default is the training switch above; Remy's arrangement with every provider is training off, receipts public. Delete everything from inside the app, any time.
 
 ## Two honest things about each
 

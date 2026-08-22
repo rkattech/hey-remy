@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const lastUpdated = 'August 15, 2026';
+const lastUpdated = 'August 22, 2026';
 ---
 
 <Layout
@@ -35,12 +35,13 @@ const lastUpdated = 'August 15, 2026';
           The rule we hold providers to
         </h2>
         <p>
-          <strong class="text-[var(--ink)]">No training on your data, no retention.</strong>
+          <strong class="text-[var(--ink)]">No training on your data — at any provider, ever.</strong>
           Every provider that processes your conversations, mail, or calendar is contractually
-          barred from training models on your data. For text processing — the overwhelming
-          majority of what Remy does — we only use providers under zero-data-retention terms:
-          nothing is kept after your request completes. Where a provider&rsquo;s retention posture
-          is still being verified, we say so below rather than rounding up.
+          barred from training models on your data. Most of what Remy does runs under
+          zero-data-retention terms: nothing is kept after your request completes. Where a lane
+          runs on other terms — an enterprise arrangement, an exception request still pending —
+          this page prints the exact state rather than rounding up. That includes the requests
+          we have filed and not yet had granted.
         </p>
       </section>
 
@@ -53,11 +54,11 @@ const lastUpdated = 'August 15, 2026';
               <span class="rounded-full bg-[var(--tint)] border border-[var(--tint-border)] px-3 py-0.5 text-xs font-medium text-[var(--accent)]">Zero data retention</span>
             </div>
             <p class="mt-2 text-[var(--ink-soft)]">
-              Remy&rsquo;s primary inference provider. Runs the assistant you talk to (GLM),
-              the background readers that index and understand your mail and calendar
-              (DeepSeek), image and document reading (Qwen), the confined web-errand browser
-              (Kimi), and search embeddings. No training on your data; nothing retained after
-              the request. Read
+              Remy&rsquo;s primary inference provider. Runs the assistant you talk to
+              (DeepSeek, with GLM as its sibling seat), the background readers that index and
+              understand your mail and calendar (DeepSeek), image and document reading (Qwen),
+              and search embeddings. No training on your data; nothing retained after the
+              request. Read
               <a class="underline" target="_blank" rel="noopener" href="https://docs.fireworks.ai/guides/security_compliance/data_handling">Fireworks&rsquo; data handling policy</a>.
             </p>
           </div>
@@ -71,6 +72,22 @@ const lastUpdated = 'August 15, 2026';
               brain on different servers — not a different assistant. No-training terms. Used
               only when Fireworks is unavailable. Read
               <a class="underline" target="_blank" rel="noopener" href="https://docs.deepinfra.com/account/data-privacy">DeepInfra&rsquo;s data privacy policy</a>.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-[var(--divider)] bg-[var(--surface)] p-5">
+            <div class="flex items-baseline justify-between gap-4">
+              <span class="font-semibold text-[var(--ink)]">Google (Gemini, enterprise API)</span>
+              <span class="rounded-full bg-[var(--surface-sunken)] border border-[var(--divider)] px-3 py-0.5 text-xs font-medium text-[var(--ink-2)]">Rolling out &middot; exception pending</span>
+            </div>
+            <p class="mt-2 text-[var(--ink-soft)]">
+              The web-errand browser lane is moving to Gemini (decision August 22, 2026; it
+              replaces the previous model on this lane). Terms: Google&rsquo;s paid enterprise
+              API — no training on your data, your data not mixed with anyone else&rsquo;s.
+              One item is not settled, so here it is plainly: Google&rsquo;s abuse monitoring
+              can involve human review, and we have filed the exception request to remove it.
+              Filed August 2026; not yet granted. This card updates when it is — or says so
+              if it is refused. Read
+              <a class="underline" target="_blank" rel="noopener" href="https://cloud.google.com/gemini/docs/discover/data-governance">Google&rsquo;s enterprise data-governance terms</a>.
             </p>
           </div>
         </div>

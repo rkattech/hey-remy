@@ -118,9 +118,12 @@ const effectiveDate = 'August 13, 2026';
       <h2 class="text-xl font-semibold tracking-tight text-[var(--ink)]">5. Third-party model providers</h2>
       <p>
         To generate replies, Remy sends the portion of your conversation and the relevant context
-        Remy needs to third-party AI inference providers, currently Fireworks AI, DeepInfra, and
-        Groq. We only use providers under zero-data-retention terms for user data: they may not
-        use your data to train their models and may not retain it after your request completes.
+        Remy needs to third-party AI inference providers — currently Fireworks AI, DeepInfra, and
+        Groq, with Google&rsquo;s enterprise Gemini API rolling out on the web-errand browser lane.
+        No provider may use your data to train their models. Most lanes run under
+        zero-data-retention terms — nothing retained after your request completes; where a lane
+        runs on other terms, the exact arrangement (including exception requests still pending)
+        is published on the AI model providers page.
         See <a class="underline" href="/ai-model-providers">AI model providers</a> for the
         per-provider detail and <a class="underline" href="/subprocessors">subprocessors</a>
         for every vendor that touches your data.

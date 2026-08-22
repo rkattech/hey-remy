@@ -50,7 +50,7 @@ Remy reads your Gmail and Google Calendar on its own. What that looks like in a 
 
 Then the part the summarizers don't do: *"Book it?"* Remy calls the pediatrician and comes back with "Thursday at 3:40" and the transcript. It fills the registration form. It drafts the reply to the coach. Each one is shown first; you press and hold; it happens. Nothing goes out without you.
 
-Your data trains nothing. The AI providers Remy uses are zero-data-retention and listed at [/ai-model-providers](/ai-model-providers). iPhone, Gmail, free during beta.
+Your data trains nothing - no provider Remy uses may train on it, contractually. Most processing runs on zero-data-retention terms, and every lane's exact arrangement is published at [/ai-model-providers](/ai-model-providers). iPhone, Gmail, free during beta.
 
 ## Pick by your ask
 
