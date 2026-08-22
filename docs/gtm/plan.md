@@ -50,3 +50,26 @@ Week 12 (assumes App Store live): ≥5 third-party mentions; Remy in ≥1 engine
   59dc891). Do not change for SEO.
 - Tracker keys present: Gemini only. OpenAI / Perplexity / Anthropic keys would add
   the other three engines (~$5-10 per weekly run). Founder's call.
+
+## Repositioning (opened 2026-08-22, after the stack change + Instinct)
+
+Stack truth (verified from remy origin/master 2026-08-22): foreground DeepSeek
+V4 Pro 0813 + GLM sibling; browser ruled to gemini-3.7-flash-med (enterprise,
+human-review exception FILED Aug 2026, pending), wiring in flight; no direct
+OpenAI runtime (Retell phone lane only + eval org); GPT-TERRA foreground debate open.
+
+- DONE 2026-08-22: sitewide truth-patch (this commit) — canonical promise is now
+  "no training at any provider (contractual); most lanes ZDR; per-lane
+  arrangements published, pending requests included."
+- HELD OPEN for founder: OpenAI ZDR / Modified Abuse Monitoring arrangement
+  application. Do NOT print as done. When granted → update ai-model-providers.
+- HELD OPEN: verify store:false on any future direct OpenAI call path (no such
+  path exists on master today).
+- Voice memo #1 topic (founder-picked): RESPONSIBLE vs INVASIVE data use —
+  metadata+snippet indexing, no bodies/attachments by default, the
+  assistant-who-gets-fired frame. Memo → article in 2-3 voices → dial ruling.
+- Parked drafts (gtm/batch-3-privacy) carry the old "none are OpenAI/Google/
+  Anthropic" claim — rebuild on the new story before any publish.
+- Instinct moment: four tests (disconnect/deletion/export/straight-answer);
+  Remy's answers need core-session verification before print (deletion bundle
+  still owed).
