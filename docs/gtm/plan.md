@@ -55,7 +55,7 @@ Week 12 (assumes App Store live): ≥5 third-party mentions; Remy in ≥1 engine
 
 Stack truth (verified from remy origin/master 2026-08-22): foreground DeepSeek
 V4 Pro 0813 + GLM sibling; browser ruled to gemini-3.7-flash-med (enterprise,
-human-review exception FILED Aug 2026, pending), wiring in flight; no direct
+human-review/prompt-logging exception GRANTED 2026-08-28), wiring in flight; no direct
 OpenAI runtime (Retell phone lane only + eval org); GPT-TERRA foreground debate open.
 
 - DONE 2026-08-22: sitewide truth-patch (this commit) — canonical promise is now

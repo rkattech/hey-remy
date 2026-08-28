@@ -31,6 +31,14 @@ sample overrides them all.
     many versus the needs of the few", "as much a safeguard of your data as you
     are yourself".
 
+## Final calibration (founder-approved exemplar: /blog/the-fired-assistant-test/, 2026-08-28)
+
+11. BOLD-LEAD SKELETON: after the opening argument, the body is bolded lead
+    sentences (the /why letter device) with 2-4 plain sentences under each.
+    A skimmer reading only the bolds gets the complete argument.
+12. LENGTH CEILING ~900 words. "Too verbose and not enough to focus the eyes"
+    was the verdict on the 1,100-word version.
+
 ## Process (binding)
 
 - Founder voice memo (or written paragraphs) FIRST; his tokens are the tissue.
