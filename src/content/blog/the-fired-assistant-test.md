@@ -4,7 +4,7 @@ description: "We trust human assistants with our email, calendar, and credit car
 heading: "The Fired Assistant Test"
 lede: "We trust human assistants with everything because breaking that trust has consequences. AI assistants should be judged the same way."
 eyebrow: "From the founder"
-date: 2026-08-22
+date: 2026-08-28
 draft: false
 question: "How should an AI assistant handle my personal data responsibly?"
 answer: "Judge an AI assistant the way you judge a human one: not just by its ability to wow you, but by whether the company behind it demonstrates verifiable transparency in its data practices. Remy's practices: it keeps metadata plus a short encrypted excerpt (about two thousand characters), not your mailbox; emails are read from the source, processed, and discarded; attachments are never copied; every action needs press-and-hold approval and comes back as a deterministic receipt; deleting your account deletes everything; and models are chosen by data terms, not just intelligence - the foreground chat runs on a zero-data-retention partner over a marginally smarter frontier model. Per-lane terms at hey-remy.com/ai-model-providers."

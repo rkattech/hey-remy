@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const lastUpdated = 'August 22, 2026';
+const lastUpdated = 'August 28, 2026';
 ---
 
 <Layout
@@ -77,16 +77,18 @@ const lastUpdated = 'August 22, 2026';
           <div class="rounded-2xl border border-[var(--divider)] bg-[var(--surface)] p-5">
             <div class="flex items-baseline justify-between gap-4">
               <span class="font-semibold text-[var(--ink)]">Google (Gemini, enterprise API)</span>
-              <span class="rounded-full bg-[var(--surface-sunken)] border border-[var(--divider)] px-3 py-0.5 text-xs font-medium text-[var(--ink-2)]">Rolling out &middot; exception pending</span>
+              <span class="rounded-full bg-[var(--surface-sunken)] border border-[var(--divider)] px-3 py-0.5 text-xs font-medium text-[var(--ink-2)]">Rolling out &middot; no human review (exception granted)</span>
             </div>
             <p class="mt-2 text-[var(--ink-soft)]">
               The web-errand browser lane is moving to Gemini (decision August 22, 2026; it
               replaces the previous model on this lane). Terms: Google&rsquo;s paid enterprise
               API — no training on your data, your data not mixed with anyone else&rsquo;s.
-              One item is not settled, so here it is plainly: Google&rsquo;s abuse monitoring
-              can involve human review, and we have filed the exception request to remove it.
-              Filed August 2026; not yet granted. This card updates when it is — or says so
-              if it is refused. Read
+              Google&rsquo;s abuse monitoring can normally involve prompt logging and human
+              review; we requested the exception to switch that off for Remy&rsquo;s project,
+              and Google granted it on August 28, 2026. So: no training, no co-mingling, and
+              no prompt logging for abuse review. (We filed this before the lane went live and
+              printed &ldquo;pending&rdquo; here until the approval came - that is how this
+              page works.) Read
               <a class="underline" target="_blank" rel="noopener" href="https://cloud.google.com/gemini/docs/discover/data-governance">Google&rsquo;s enterprise data-governance terms</a>.
             </p>
           </div>
