@@ -73,3 +73,16 @@ OpenAI runtime (Retell phone lane only + eval org); GPT-TERRA foreground debate 
 - Instinct moment: four tests (disconnect/deletion/export/straight-answer);
   Remy's answers need core-session verification before print (deletion bundle
   still owed).
+
+## Repositioning II (2026-09-09, founder-ruled): the household operator
+
+The Aug-Sep 2026 launches (Meta Muse, Grok Bot, Instinct) took the old five-bullet answer
+to parity. Founder ruled the wedge on 2026-09-09: the household operator — a parent
+running a home with school-age kids. The lead claim moves from "life, not work" (still D3,
+still the first-mention rule) to standing ownership: Remy HOLDS the work rather than
+performing an errand while you watch. Backed by the loops rebuild in the product repo
+(REMY_TARGET_ARCHITECTURE.md §8), which is in flight, not live — so the claim is gated.
+
+Full reasoning, claims, sentences and truth gates: positioning.md. Site rewrites (/why,
+/what-is-remy, homepage subhead) and the three new comparison pages follow the founder's
+read, not before.
