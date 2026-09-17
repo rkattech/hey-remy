@@ -1,6 +1,6 @@
 # Remy
 
-> Remy is the AI assistant for your life, not your job. An iPhone app that reads your Gmail and Google Calendar (with your permission), catches what you'd miss in school, family, and life-admin emails, makes phone calls on your behalf, fills in forms, and keeps a running memory of your life - with every outward action held until you press and hold to approve. Built for non-technical people: install, sign in with Google, say hi. Made by Hoot Ventures. Website: https://www.hey-remy.com
+> Remy is the AI assistant for your life, not your job. An iPhone app that reads your Gmail and Google Calendar (with your permission), catches what you'd miss in school, family, and life-admin emails, makes phone calls on your behalf, fills in forms, and keeps a running memory of your life - with every outward action held until you press and hold to approve. Built for non-technical people: install, sign in with Google, say hi. Made and operated by Hoot Ventures LLC (https://www.hootventures.ai), founded by Rohit Kapoor. Website: https://www.hey-remy.com
 
 ## What Remy does
 - Reads long emails (school newsletters, threads, fine print) and surfaces the one line that matters, before you ask.

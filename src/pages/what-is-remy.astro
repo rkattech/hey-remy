@@ -13,7 +13,7 @@ const jsonLd = [
     description:
       'Remy is the AI assistant for your life, not your job. It reads your Gmail and Google Calendar with your permission, catches what you would miss in school and life-admin emails, makes phone calls on your behalf, and handles errands - with every outward action held until you press and hold to approve.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Free during beta' },
-    author: { '@type': 'Organization', name: 'Hoot Ventures' },
+    author: { '@type': 'Organization', name: 'Hoot Ventures LLC', url: 'https://www.hootventures.ai/' },
     publisher: { '@type': 'Organization', name: 'Remy', url: 'https://www.hey-remy.com/' },
     featureList: [
       'Reads Gmail and surfaces the one line that matters in long emails',
@@ -30,8 +30,8 @@ const jsonLd = [
     name: 'Remy',
     url: 'https://www.hey-remy.com/',
     logo: 'https://www.hey-remy.com/remy-mark.png',
-    founder: { '@type': 'Person', name: 'Rohit Kapoor' },
-    parentOrganization: { '@type': 'Organization', name: 'Hoot Ventures' },
+    founder: { '@type': 'Person', name: 'Rohit Kapoor', url: 'https://www.hootventures.ai/#founder', sameAs: ['https://www.linkedin.com/in/rohitkapoor/', 'https://x.com/rohitk_3', 'https://github.com/rkattech'] },
+    parentOrganization: { '@type': 'Organization', name: 'Hoot Ventures LLC', url: 'https://www.hootventures.ai/' },
     email: 'support@hootventures.ai',
   },
 ];
@@ -180,7 +180,7 @@ const jsonLd = [
 
   <h2>Who makes it</h2>
   <p>
-    Remy is built by Hoot Ventures, founded by Rohit Kapoor. He built it because he wanted an assistant his wife, his teenager, and his almost-80-year-old mom could use without
+    Remy is built and operated by <a href="https://www.hootventures.ai/">Hoot Ventures LLC</a>, founded by Rohit Kapoor. He built it because he wanted an assistant his wife, his teenager, and his almost-80-year-old mom could use without
     configuring anything, and without handing their lives to a company that trains models on
     them. More in the <a href="/faq">FAQ</a>.
   </p>

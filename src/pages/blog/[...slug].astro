@@ -18,7 +18,7 @@ const article = {
   description: post.data.description,
   datePublished: post.data.date.toISOString(),
   dateModified: (post.data.updated ?? post.data.date).toISOString(),
-  author: { '@type': 'Person', name: 'Rohit Kapoor', url: 'https://www.hey-remy.com/why' },
+  author: { '@type': 'Person', name: 'Rohit Kapoor', url: 'https://www.hey-remy.com/why', sameAs: ['https://www.hootventures.ai/#founder', 'https://www.linkedin.com/in/rohitkapoor/'] },
   publisher: { '@type': 'Organization', name: 'Remy', url: 'https://www.hey-remy.com/' },
   mainEntityOfPage: url,
   about: { '@type': 'SoftwareApplication', name: 'Remy', url: 'https://www.hey-remy.com/' },
